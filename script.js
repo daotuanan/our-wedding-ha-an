@@ -146,8 +146,10 @@ let countdownTimer;
 let galleryIndex = 0;
 let galleryDirection = 1;
 let galleryTimer;
+let guestbookRefreshTimer;
 let remoteGuestbookMessages = [];
 const galleryIntervalMs = 2000;
+const guestbookRefreshIntervalMs = 30000;
 
 const weddingDates = {
   "nha-gai": [
@@ -442,6 +444,12 @@ function loadGuestbookMessagesFromSheet() {
   document.body.append(script);
 }
 
+function startGuestbookRefresh() {
+  clearInterval(guestbookRefreshTimer);
+  loadGuestbookMessagesFromSheet();
+  guestbookRefreshTimer = setInterval(loadGuestbookMessagesFromSheet, guestbookRefreshIntervalMs);
+}
+
 function renderGuestbookMessages() {
   const messages = getGuestbookMessages().slice().reverse();
   elements.guestbookList.replaceChildren();
@@ -520,7 +528,6 @@ function render() {
   renderHeroDates();
   renderWeddingCalendar();
   renderGuestbookMessages();
-  loadGuestbookMessagesFromSheet();
   setActiveSegment();
   updateCalendarLinks();
   updateCountdown();
@@ -628,6 +635,7 @@ elements.guestbookForm.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "guestbook", ...message })
     });
+    window.setTimeout(loadGuestbookMessagesFromSheet, 1800);
   }
 
   elements.guestbookStatus.textContent = `Cảm ơn ${message.name} đã gửi lời chúc.`;
@@ -669,3 +677,4 @@ elements.musicToggle.addEventListener("click", () => {
 render();
 setupScrollReveal();
 startGalleryAutoplay();
+startGuestbookRefresh();
