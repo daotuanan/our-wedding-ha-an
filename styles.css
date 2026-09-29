@@ -1109,6 +1109,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   outline-offset: 2px;
 }
 
+.rsvp-form input[readonly] {
+  color: rgba(255, 250, 242, 0.78);
+  background: rgba(255, 250, 242, 0.08);
+  cursor: not-allowed;
+}
+
 .rsvp-form__wide,
 .rsvp-form button,
 .guestbook-form label,

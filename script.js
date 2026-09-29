@@ -616,7 +616,7 @@ elements.rsvpForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const response = {
     guestId,
-    name: elements.rsvpName.value.trim(),
+    name: guestName,
     group: elements.rsvpGroup.value,
     groupLabel: wedding.groups[elements.rsvpGroup.value].label,
     attend: elements.rsvpAttend.value,
