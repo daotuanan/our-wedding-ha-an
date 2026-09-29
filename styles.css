@@ -1200,12 +1200,51 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (max-width: 520px) {
-  .section { width: min(100% - 28px, 1120px); padding: 58px 0; }
-  .hero { padding: 88px 18px 44px; }
+  .section { width: min(100% - 24px, 1120px); padding: 44px 0; }
+  .section__heading { margin-bottom: 22px; }
+  .section__heading h2, .countdown h2, .rsvp h2 { font-size: clamp(24px, 8.6vw, 42px); line-height: 1.08; }
+  .hero { min-height: auto; padding: 72px 14px 34px; }
+  .hero__content { padding: 34px 16px 28px; border-radius: 150px 150px 10px 10px; }
+  .hero__seal { width: 60px; height: 60px; margin-bottom: 16px; font-size: 13px; }
+  .hero h2 { font-size: clamp(44px, 17vw, 64px); }
+  .hero__subtitle { margin-top: 16px; font-size: 15px; line-height: 1.6; }
+  .hero__dates { margin-top: 18px; gap: 8px; }
   .hero__dates div { min-width: 100%; }
+  .hero__dates strong { font-size: 23px; }
   .cover__panel { padding: 28px 20px; }
   .cover h1 { font-size: 48px; }
   .primary-btn, .ghost-btn { width: 100%; }
   .segment { width: 100%; display: grid; grid-template-columns: 1fr; }
-  .countdown__grid div { min-height: 96px; }
+  .paper,
+  .event-card,
+  .location-card,
+  .gift-card { padding: 18px; }
+  .countdown { gap: 18px; padding: 24px 16px; }
+  .calendar-card { grid-template-columns: 82px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .calendar-card__date { min-height: 82px; }
+  .calendar-card__date span { font-size: 40px; }
+  .calendar-card__meta b { font-size: 16px; }
+  .calendar-actions { gap: 8px; }
+  .countdown__grid { gap: 8px; }
+  .countdown__grid div { min-height: 82px; padding: 12px 6px; }
+  .countdown__grid strong { font-size: 34px; }
+  .profile-grid { gap: 12px; }
+  .profile-card img { aspect-ratio: 1 / 1.18; }
+  .event-card h3,
+  .location-card h3 { font-size: 25px; }
+  .location-card__media { gap: 10px; }
+  .location-card img { width: 136px; height: 136px; }
+  .location-card__media iframe { min-height: 176px; }
+  .gallery-carousel { grid-template-columns: 36px minmax(0, 1fr) 36px; gap: 6px; }
+  .gallery-nav { width: 36px; height: 36px; font-size: 24px; }
+  .gallery__grid { padding: 8px; }
+  .gallery__grid img, .gallery__grid img:first-child { height: min(58vh, 330px); }
+  .gallery__grid[data-orientation="portrait"] .gallery-image { height: min(60vh, 350px); }
+  .rsvp__content,
+  .guestbook__content { padding: 30px 18px; }
+  .gift-grid { gap: 12px; }
+  .gift-card__qr { width: 116px; }
+  .gift-card__title { font-size: 25px; }
+  .guestbook-message { padding: 14px 15px; }
+  .music-float { right: 14px; bottom: 14px; width: 42px; height: 42px; }
 }
