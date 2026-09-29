@@ -1,6 +1,6 @@
 const wedding = {
   rsvpEndpoint: "",
-  guestbookEndpoint: "",
+  guestbookEndpoint: "https://script.google.com/macros/s/AKfycby0wlQ9GKui5bMclmadBZYI1sEi3B3OF7MpG-cMgLw5tiE1i_CLf-nh6gJBo6m5oIIZxg/exec",
   groups: {
     "nha-gai": {
       label: "Nhà gái",
