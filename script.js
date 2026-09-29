@@ -58,7 +58,7 @@ const wedding = {
       group: "nha-gai",
       title: "Tư gia cô dâu",
       address: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai",
-      mapQuery: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai",
+      mapQuery: "13.895599,108.175019",
       map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7",
       qr: "assets/qr_nha_gai.png"
     },
@@ -66,16 +66,16 @@ const wedding = {
       group: "nha-trai",
       title: "Tư gia chú rể",
       address: "13/5 Nguyễn Văn Yến, phường Phú Thạnh, TP. Hồ Chí Minh",
-      mapQuery: "13/5 Nguyễn Văn Yến, phường Phú Thạnh, TP. Hồ Chí Minh",
-      map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7",
+      mapQuery: "10.7652759,106.6245117",
+      map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9",
       qr: "assets/qr_nha_trai.png"
     },
     {
       group: "nha-trai",
       title: "Sảnh Tình Yêu",
       address: "Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, phường Tân Phú, TP. Hồ Chí Minh",
-      mapQuery: "Nhà hàng Cưới Nam Bộ 615A Âu Cơ phường Tân Phú TP. Hồ Chí Minh",
-      map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9",
+      mapQuery: "10.785288,106.6414703",
+      map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7",
       qr: "assets/qr_nha_trai_le.png"
     }
   ],
