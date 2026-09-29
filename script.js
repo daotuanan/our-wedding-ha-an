@@ -196,6 +196,7 @@ const elements = {
   showRsvpForm: document.getElementById("showRsvpForm"),
   rsvpForm: document.getElementById("rsvpForm"),
   rsvpName: document.getElementById("rsvpName"),
+  rsvpTitle: document.getElementById("rsvpTitle"),
   rsvpGroup: document.getElementById("rsvpGroup"),
   rsvpAttend: document.getElementById("rsvpAttend"),
   rsvpGuests: document.getElementById("rsvpGuests"),
@@ -223,6 +224,7 @@ function setText() {
   elements.guestGreeting.textContent = guestName;
   elements.invitationCopy.textContent = group.copy.replace("Quý khách", guestName);
   elements.countdownTitle.textContent = group.countdownTitle;
+  elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
   elements.rsvpName.value = guestName;
   elements.rsvpGroup.value = currentGroup;
   elements.guestbookName.value = guestName;
