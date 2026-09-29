@@ -1,5 +1,5 @@
 const wedding = {
-  rsvpEndpoint: "",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycby0wlQ9GKui5bMclmadBZYI1sEi3B3OF7MpG-cMgLw5tiE1i_CLf-nh6gJBo6m5oIIZxg/exec",
   guestbookEndpoint: "https://script.google.com/macros/s/AKfycby0wlQ9GKui5bMclmadBZYI1sEi3B3OF7MpG-cMgLw5tiE1i_CLf-nh6gJBo6m5oIIZxg/exec",
   groups: {
     "nha-gai": {
@@ -628,12 +628,12 @@ elements.rsvpForm.addEventListener("submit", async (event) => {
   saveRsvp(response);
 
   if (wedding.rsvpEndpoint) {
-    await fetch(wedding.rsvpEndpoint, {
+    fetch(wedding.rsvpEndpoint, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(response)
-    });
+      body: JSON.stringify({ type: "rsvp", ...response })
+    }).catch(() => {});
   }
 
   elements.rsvpStatus.textContent = response.attend === "yes"

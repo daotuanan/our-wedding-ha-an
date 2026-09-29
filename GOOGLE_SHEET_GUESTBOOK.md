@@ -1,6 +1,6 @@
-# Google Sheet Guestbook Setup
+# Google Sheet RSVP And Guestbook Setup
 
-This site can save and display guestbook wishes from a Google Sheet through Google Apps Script.
+This site can save RSVP responses and display guestbook wishes from a Google Sheet through Google Apps Script.
 
 ## 1. Create The Sheet
 
@@ -15,10 +15,18 @@ This site can save and display guestbook wishes from a Google Sheet through Goog
 3. Paste it into `Code.gs`.
 4. Save the project.
 
-The script will automatically create a sheet tab named `Guestbook` with columns:
+The script will automatically create these sheet tabs.
+
+`Guestbook`:
 
 ```text
 submittedAt | guestId | name | message
+```
+
+`RSVP`:
+
+```text
+submittedAt | guestId | name | group | groupLabel | attend | guests | phone
 ```
 
 ## 3. Deploy As Web App
@@ -42,7 +50,7 @@ Open `script.js` and paste the Web App URL here:
 
 ```js
 const wedding = {
-  rsvpEndpoint: "",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycb.../exec",
   guestbookEndpoint: "https://script.google.com/macros/s/AKfycb.../exec",
   groups: {
 ```
@@ -57,8 +65,9 @@ git push
 
 ## 5. How It Works
 
+- When a guest confirms RSVP, the response is posted to the `RSVP` tab.
 - When a guest submits a wish, the site immediately shows it on the invitation.
-- The wish is also posted to Google Sheet through Apps Script.
+- The wish is also posted to the `Guestbook` tab through Apps Script.
 - When the invitation loads, it reads shared wishes from Google Sheet using JSONP so it works on GitHub Pages without CORS issues.
 
 ## 6. Test Link
