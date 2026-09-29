@@ -562,9 +562,14 @@ elements.musicToggle.addEventListener("click", async () => {
   }
 
   if (elements.bgMusic.paused) {
-    await elements.bgMusic.play();
     elements.musicToggle.textContent = "Tắt nhạc";
     elements.musicToggle.setAttribute("aria-pressed", "true");
+    try {
+      await elements.bgMusic.play();
+    } catch {
+      elements.musicToggle.textContent = "Nhạc nền";
+      elements.musicToggle.setAttribute("aria-pressed", "false");
+    }
   } else {
     elements.bgMusic.pause();
     elements.musicToggle.textContent = "Nhạc nền";
