@@ -9,7 +9,7 @@ function doPost(event) {
   }
 
   if (payload.type === "rsvp") {
-    appendRsvpResponse(payload);
+    upsertRsvpResponse(payload);
   }
 
   return jsonResponse({ ok: true });
@@ -42,11 +42,11 @@ function appendGuestbookMessage(payload) {
   ]);
 }
 
-function appendRsvpResponse(payload) {
+function upsertRsvpResponse(payload) {
   const sheet = getOrCreateSheet(RSVP_SHEET_NAME);
   ensureRsvpHeader(sheet);
 
-  sheet.appendRow([
+  const row = [
     payload.submittedAt || new Date().toISOString(),
     payload.guestId || "",
     payload.name || "",
@@ -55,7 +55,24 @@ function appendRsvpResponse(payload) {
     payload.attend || "",
     Number(payload.guests || 0),
     payload.phone || ""
-  ]);
+  ];
+  const existingRow = findRsvpRowByGuestId(sheet, payload.guestId);
+
+  if (existingRow) {
+    sheet.getRange(existingRow, 1, 1, row.length).setValues([row]);
+    return;
+  }
+
+  sheet.appendRow(row);
+}
+
+function findRsvpRowByGuestId(sheet, guestId) {
+  if (!guestId || sheet.getLastRow() < 2) return null;
+
+  const guestIds = sheet.getRange(2, 2, sheet.getLastRow() - 1, 1).getValues();
+  const targetGuestId = String(guestId);
+  const index = guestIds.findIndex((row) => String(row[0]) === targetGuestId);
+  return index >= 0 ? index + 2 : null;
 }
 
 function getGuestbookMessages() {

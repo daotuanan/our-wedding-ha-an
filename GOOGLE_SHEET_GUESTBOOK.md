@@ -66,6 +66,7 @@ git push
 ## 5. How It Works
 
 - When a guest confirms RSVP, the response is posted to the `RSVP` tab.
+- RSVP responses are updated by `guestId`: if the same guest confirms again, their existing row is overwritten with the newest answer.
 - When a guest submits a wish, the site immediately shows it on the invitation.
 - The wish is also posted to the `Guestbook` tab through Apps Script.
 - When the invitation loads, it reads shared wishes from Google Sheet using JSONP so it works on GitHub Pages without CORS issues.
