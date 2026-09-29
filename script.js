@@ -264,13 +264,13 @@ function renderGifts() {
     .filter(eventMatchesGroup)
     .map((gift) => `
       <article class="gift-card">
+        <p class="gift-card__title">${gift.title}</p>
         <button class="gift-card__qr" type="button" data-gift-toggle aria-expanded="false">
           <span>囍</span>
           ${gift.qr ? `<img src="${gift.qr}" alt="QR tài khoản ${gift.owner}" hidden />` : ""}
         </button>
         ${gift.qr ? `<small class="gift-card__hint" data-gift-hint>Bấm vào chữ Hỷ để hiện mã QR</small>` : ""}
         <div class="gift-card__details" data-gift-details ${gift.qr ? "hidden" : ""}>
-          <p class="eyebrow">${gift.title}</p>
           ${gift.bank || gift.accountName || gift.account ? `
             <dl>
               ${gift.bank ? `<div><dt>Ngân hàng</dt><dd>${gift.bank}</dd></div>` : ""}

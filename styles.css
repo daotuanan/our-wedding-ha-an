@@ -750,6 +750,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: transform 260ms ease, box-shadow 260ms ease;
 }
 
+.gift-card__title {
+  margin: 0;
+  color: var(--red);
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
 .gift-card__hint {
   grid-column: 1;
   justify-self: center;
