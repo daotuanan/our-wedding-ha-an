@@ -7,6 +7,7 @@
   <title>Thiệp cưới Hà & An</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/optimized/background.webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -102,10 +103,10 @@
       </div>
       <div class="profile-grid">
         <article class="profile-card">
-          <img src="assets/CD.JPG" alt="Ảnh cô dâu Hà" />
+          <img src="assets/optimized/CD.webp" alt="Ảnh cô dâu Hà" width="1200" height="1800" loading="lazy" decoding="async" />
         </article>
         <article class="profile-card profile-card--dark">
-          <img src="assets/CR.JPG" alt="Ảnh chú rể An" />
+          <img src="assets/optimized/CR.webp" alt="Ảnh chú rể An" width="1200" height="1800" loading="lazy" decoding="async" />
         </article>
       </div>
     </section>
@@ -234,7 +235,7 @@
   <button class="music-float" id="musicToggle" type="button" aria-label="Tắt nhạc nền" aria-pressed="true" hidden>
     <span aria-hidden="true">♪</span>
   </button>
-  <script src="gallery-manifest.js"></script>
-  <script src="script.js"></script>
+  <script src="gallery-manifest.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

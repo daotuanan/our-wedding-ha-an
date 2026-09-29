@@ -146,10 +146,12 @@ let countdownTimer;
 let galleryIndex = 0;
 let galleryDirection = 1;
 let galleryTimer;
-let guestbookRefreshTimer;
 let remoteGuestbookMessages = [];
-const galleryIntervalMs = 2000;
-const guestbookRefreshIntervalMs = 30000;
+let invitationHasOpened = false;
+let guestbookHasRequested = false;
+let guestbookRequestPending = false;
+const preloadedGalleryImages = new Set();
+const galleryIntervalMs = 3500;
 
 const weddingDates = {
   "nha-gai": [
@@ -279,18 +281,42 @@ function renderTimeline() {
 function renderLocations() {
   elements.locationGrid.innerHTML = wedding.locations
     .filter(eventMatchesGroup)
-    .map((location) => `
+    .map((location) => {
+      const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&output=embed`;
+      return `
       <article class="location-card">
         <h3>${location.title}</h3>
         <p>${location.address}</p>
         <div class="location-card__media">
-          <img src="${location.qr}" alt="QR chỉ đường đến ${location.title}" />
-          <iframe title="Bản đồ ${location.title}" src="https://www.google.com/maps?q=${encodeURIComponent(location.mapQuery)}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <img src="${location.qr}" alt="QR chỉ đường đến ${location.title}" width="148" height="148" loading="lazy" decoding="async" />
+          <div class="location-map" data-location-map>
+            <button class="map-preview" type="button" data-map-embed="${mapEmbed}" data-map-title="Bản đồ ${location.title}">
+              <span>Xem bản đồ</span>
+            </button>
+          </div>
         </div>
         <a href="${location.map}" target="_blank" rel="noreferrer">Mở Google Maps</a>
       </article>
-    `)
+    `;
+    })
     .join("");
+
+  elements.locationGrid.querySelectorAll("[data-map-embed]").forEach((button) => {
+    button.addEventListener("click", () => loadLocationMap(button));
+  });
+}
+
+function loadLocationMap(button) {
+  const container = button.closest("[data-location-map]");
+  if (!container || container.dataset.loaded) return;
+
+  const iframe = document.createElement("iframe");
+  iframe.title = button.dataset.mapTitle || "Bản đồ";
+  iframe.src = button.dataset.mapEmbed;
+  iframe.loading = "lazy";
+  iframe.referrerPolicy = "no-referrer-when-downgrade";
+  container.dataset.loaded = "true";
+  container.replaceChildren(iframe);
 }
 
 function renderGifts() {
@@ -301,7 +327,7 @@ function renderGifts() {
         <p class="gift-card__title">${gift.title}</p>
         <button class="gift-card__qr" type="button" data-gift-toggle aria-expanded="false">
           <span>囍</span>
-          ${gift.qr ? `<img src="${gift.qr}" alt="QR tài khoản ${gift.owner}" hidden />` : ""}
+          ${gift.qr ? `<img data-src="${gift.qr}" alt="QR tài khoản ${gift.owner}" hidden />` : ""}
         </button>
         ${gift.qr ? `<small class="gift-card__hint" data-gift-hint>Bấm vào chữ Hỷ để hiện mã QR</small>` : ""}
         <div class="gift-card__details" data-gift-details ${gift.qr ? "hidden" : ""}>
@@ -323,6 +349,10 @@ function renderGifts() {
       const qrImage = button.querySelector("img");
       if (!qrImage) return;
       const willShow = qrImage.hidden;
+      if (willShow && qrImage.dataset.src) {
+        qrImage.src = qrImage.dataset.src;
+        delete qrImage.dataset.src;
+      }
       qrImage.hidden = !willShow;
       button.querySelector("span").hidden = willShow;
       button.setAttribute("aria-expanded", String(willShow));
@@ -378,6 +408,19 @@ function setActiveSegment() {
   });
 }
 
+function preloadGalleryImage(index) {
+  const images = window.galleryImages || [];
+  if (!images.length) return;
+
+  const image = images[(index + images.length) % images.length];
+  if (!image?.src || preloadedGalleryImages.has(image.src)) return;
+
+  preloadedGalleryImages.add(image.src);
+  const preloader = new Image();
+  preloader.decoding = "async";
+  preloader.src = image.src;
+}
+
 function renderGallery() {
   const images = window.galleryImages || [];
   if (!images.length) {
@@ -391,7 +434,7 @@ function renderGallery() {
   galleryIndex = (galleryIndex + images.length) % images.length;
   const image = images[galleryIndex];
   elements.galleryGrid.dataset.direction = galleryDirection > 0 ? "next" : "prev";
-  elements.galleryGrid.innerHTML = `<img class="gallery-image" src="${image.src}" alt="${image.alt || `Khoảnh khắc cưới ${galleryIndex + 1}`}" />`;
+  elements.galleryGrid.innerHTML = `<img class="gallery-image" src="${image.src}" alt="${image.alt || `Khoảnh khắc cưới ${galleryIndex + 1}`}" loading="lazy" decoding="async" />`;
   const galleryImage = elements.galleryGrid.querySelector("img");
   galleryImage.addEventListener("load", () => {
     const orientation = galleryImage.naturalHeight > galleryImage.naturalWidth ? "portrait" : "landscape";
@@ -400,6 +443,13 @@ function renderGallery() {
   elements.galleryCounter.textContent = `${galleryIndex + 1} / ${images.length}`;
   elements.galleryPrev.disabled = images.length <= 1;
   elements.galleryNext.disabled = images.length <= 1;
+
+  const preloadNext = () => preloadGalleryImage(galleryIndex + galleryDirection);
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(preloadNext, { timeout: 1200 });
+  } else {
+    window.setTimeout(preloadNext, 300);
+  }
 }
 
 function moveGallery(direction) {
@@ -411,14 +461,35 @@ function moveGallery(direction) {
 }
 
 function startGalleryAutoplay() {
-  clearInterval(galleryTimer);
   const images = window.galleryImages || [];
-  if (images.length <= 1) return;
+  if (images.length <= 1 || !invitationHasOpened || document.hidden) {
+    stopGalleryAutoplay();
+    return;
+  }
+
+  if (galleryTimer) return;
+
   galleryTimer = setInterval(() => moveGallery(1), galleryIntervalMs);
+}
+
+function stopGalleryAutoplay() {
+  clearInterval(galleryTimer);
+  galleryTimer = undefined;
+}
+
+function setupGalleryAutoplay() {
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopGalleryAutoplay();
+    } else {
+      startGalleryAutoplay();
+    }
+  });
 }
 
 function moveGalleryManually(direction) {
   moveGallery(direction);
+  stopGalleryAutoplay();
   startGalleryAutoplay();
 }
 
@@ -447,8 +518,10 @@ function getGuestbookMessages() {
 }
 
 function loadGuestbookMessagesFromSheet() {
-  if (!wedding.guestbookEndpoint) return;
+  if (!wedding.guestbookEndpoint || guestbookRequestPending || guestbookHasRequested) return;
 
+  guestbookRequestPending = true;
+  guestbookHasRequested = true;
   const callbackName = `receiveGuestbook${Date.now()}`;
   const script = document.createElement("script");
   const url = new URL(wedding.guestbookEndpoint);
@@ -456,6 +529,7 @@ function loadGuestbookMessagesFromSheet() {
   url.searchParams.set("callback", callbackName);
 
   window[callbackName] = (messages) => {
+    guestbookRequestPending = false;
     remoteGuestbookMessages = Array.isArray(messages) ? messages : [];
     renderGuestbookMessages();
     script.remove();
@@ -463,6 +537,7 @@ function loadGuestbookMessagesFromSheet() {
   };
 
   script.onerror = () => {
+    guestbookRequestPending = false;
     script.remove();
     delete window[callbackName];
   };
@@ -472,9 +547,21 @@ function loadGuestbookMessagesFromSheet() {
 }
 
 function startGuestbookRefresh() {
-  clearInterval(guestbookRefreshTimer);
   loadGuestbookMessagesFromSheet();
-  guestbookRefreshTimer = setInterval(loadGuestbookMessagesFromSheet, guestbookRefreshIntervalMs);
+}
+
+function setupGuestbookLazyLoad() {
+  if (!elements.guestbookList || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      startGuestbookRefresh();
+      observer.disconnect();
+    });
+  }, { rootMargin: "420px 0px", threshold: 0.01 });
+
+  observer.observe(elements.guestbookList);
 }
 
 function renderGuestbookMessages() {
@@ -589,9 +676,11 @@ document.querySelectorAll("[data-group]").forEach((button) => {
 });
 
 elements.openInvitation.addEventListener("click", () => {
+  invitationHasOpened = true;
   document.body.classList.add("invitation-open");
   window.setTimeout(() => elements.cover.setAttribute("hidden", ""), 450);
-  playBackgroundMusic();
+  window.setTimeout(playBackgroundMusic, 700);
+  startGalleryAutoplay();
 });
 
 elements.galleryPrev.addEventListener("click", () => moveGalleryManually(-1));
@@ -662,6 +751,7 @@ elements.guestbookForm.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "guestbook", ...message })
     });
+    guestbookHasRequested = false;
     window.setTimeout(loadGuestbookMessagesFromSheet, 1800);
   }
 
@@ -703,5 +793,5 @@ elements.musicToggle.addEventListener("click", () => {
 
 render();
 setupScrollReveal();
-startGalleryAutoplay();
-startGuestbookRefresh();
+setupGalleryAutoplay();
+setupGuestbookLazyLoad();
