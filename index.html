@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thiệp cưới Hà và An" />
+  <title>Thiệp cưới Hà & An</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cover" id="cover" aria-live="polite">
+    <div class="cover__panel">
+      <p class="eyebrow">Song hỷ</p>
+      <h1>Hà <span>&</span> An</h1>
+      <p class="cover__guest">Kính mời <strong id="coverGuest">Quý khách</strong></p>
+      <p class="cover__text">Đến chung vui cùng gia đình.</p>
+      <button class="primary-btn" id="openInvitation" type="button">Mở thiệp</button>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#top" class="brand">Hà & An</a>
+      <div class="nav__links">
+        <a href="#invitation">Lời mời</a>
+        <a href="#schedule">Lịch trình</a>
+        <a href="#location">Địa điểm</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
+    </nav>
+
+    <div class="hero__content">
+      <div class="hero__seal" aria-hidden="true">Song hỷ</div>
+      <p class="eyebrow">Trân trọng kính mời</p>
+      <h2>Hà <span>&</span> An</h2>
+      <p class="hero__subtitle" id="heroSubtitle">Trân trọng kính mời Quý khách đến chung vui cùng gia đình chúng tôi.</p>
+      <div class="hero__dates" id="heroDates" aria-label="Ngày tổ chức"></div>
+      <div class="hero__actions">
+        <a class="primary-btn" href="#schedule">Xem lịch trình</a>
+        <button class="ghost-btn" id="musicToggle" type="button" aria-pressed="false">Nhạc nền</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section intro" id="invitation">
+      <div class="section__heading">
+        <p class="eyebrow">Thiệp mời</p>
+        <h2>Trân trọng kính mời <span id="guestGreeting">Quý khách</span></h2>
+      </div>
+      <div class="intro__grid">
+        <article class="paper paper--wide invitation-card">
+          <p>Đến dự bữa tiệc chung vui cùng gia đình chúng tôi.</p>
+          <div class="couple-names">
+            <span>Hà</span>
+            <b>&</b>
+            <span>An</span>
+          </div>
+          <p id="invitationCopy">Kính mời Quý khách đến chung vui, chúc phúc cùng gia đình trong ngày vui trọng đại.</p>
+          <div class="family-pair">
+            <div class="family-card">
+              <h3>Nhà gái</h3>
+              <p>Ông <strong>Đào Thanh Vui</strong></p>
+              <p>Bà <strong>Võ Thị Hoa</strong></p>
+              <small>Gia Lai</small>
+            </div>
+            <div class="family-card">
+              <h3>Nhà trai</h3>
+              <p>Ông <strong>Đào Tuấn Anh</strong></p>
+              <p>Bà <strong>Đồng Thị Thanh Thuý</strong></p>
+              <small>TP. Hồ Chí Minh</small>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section countdown" aria-label="Đếm ngược ngày cưới">
+      <div>
+        <p class="eyebrow">Đếm ngược</p>
+        <h2 id="countdownTitle">Lễ Vu Quy tại Gia Lai</h2>
+      </div>
+      <div class="wedding-calendar" id="weddingCalendar" aria-label="Lịch cưới"></div>
+      <div class="countdown__grid" id="countdownGrid">
+        <div><strong id="days">00</strong><span>Ngày</span></div>
+        <div><strong id="hours">00</strong><span>Giờ</span></div>
+        <div><strong id="minutes">00</strong><span>Phút</span></div>
+        <div><strong id="seconds">00</strong><span>Giây</span></div>
+      </div>
+      <div class="calendar-actions" aria-label="Thêm lịch cưới">
+        <a class="ghost-btn" id="calendarPrimary" href="#" target="_blank" rel="noreferrer">Thêm vào lịch</a>
+        <a class="ghost-btn" id="calendarSecondary" href="#" target="_blank" rel="noreferrer">Lịch tiệc cưới</a>
+      </div>
+    </section>
+
+    <section class="section" id="couple">
+      <div class="section__heading">
+        <p class="eyebrow">Cô dâu & chú rể</p>
+        <h2>Hà & An</h2>
+      </div>
+      <div class="profile-grid">
+        <article class="profile-card">
+          <img src="assets/CD.JPG" alt="Ảnh cô dâu Hà" />
+        </article>
+        <article class="profile-card profile-card--dark">
+          <img src="assets/CR.JPG" alt="Ảnh chú rể An" />
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <div class="section__heading">
+        <p class="eyebrow">Lịch trình nghi lễ</p>
+        <h2 id="scheduleTitle">Các mốc thời gian chính</h2>
+      </div>
+      <div class="segment" role="tablist" aria-label="Chọn nhóm khách mời">
+        <button type="button" data-group="nha-gai">Nhà gái</button>
+        <button type="button" data-group="nha-trai">Nhà trai</button>
+        <button type="button" data-group="both">Tất cả</button>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="section locations" id="location">
+      <div class="section__heading">
+        <p class="eyebrow">Địa điểm tổ chức</p>
+        <h2>Bản đồ & mã QR chỉ đường</h2>
+      </div>
+      <div class="location-grid" id="locationGrid"></div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="section__heading">
+        <p class="eyebrow">Album</p>
+        <h2>Khoảnh khắc của chúng tôi</h2>
+      </div>
+      <div class="gallery-carousel" id="galleryCarousel" aria-label="Album ảnh cưới">
+        <button class="gallery-nav gallery-nav--prev" id="galleryPrev" type="button" aria-label="Ảnh trước">‹</button>
+        <div class="gallery__grid" id="galleryGrid"></div>
+        <button class="gallery-nav gallery-nav--next" id="galleryNext" type="button" aria-label="Ảnh tiếp theo">›</button>
+      </div>
+      <p class="gallery-counter" id="galleryCounter" aria-live="polite"></p>
+    </section>
+
+    <section class="section rsvp" id="rsvp">
+      <div class="rsvp__content">
+        <p class="eyebrow">Xác nhận tham dự</p>
+        <h2>Hẹn gặp Quý khách</h2>
+        <p>Xin xác nhận tham dự để gia đình chuẩn bị chu đáo.</p>
+        <button class="primary-btn" id="showRsvpForm" type="button" aria-expanded="false" aria-controls="rsvpForm">Xác nhận tham dự</button>
+        <form class="rsvp-form" id="rsvpForm" hidden>
+          <label>
+            <span>Tên khách mời</span>
+            <input id="rsvpName" name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Nhóm khách</span>
+            <select id="rsvpGroup" name="group" required>
+              <option value="nha-gai">Nhà gái</option>
+              <option value="nha-trai">Nhà trai</option>
+              <option value="both">Hai gia đình</option>
+            </select>
+          </label>
+          <label>
+            <span>Tham dự</span>
+            <select id="rsvpAttend" name="attend" required>
+              <option value="yes">Có tham dự</option>
+              <option value="no">Rất tiếc không tham dự</option>
+            </select>
+          </label>
+          <label>
+            <span>Số người</span>
+            <input id="rsvpGuests" name="guests" type="number" min="1" max="10" value="1" required />
+          </label>
+          <label>
+            <span>Số điện thoại</span>
+            <input id="rsvpPhone" name="phone" type="tel" autocomplete="tel" />
+          </label>
+          <button class="primary-btn" type="submit">Gửi xác nhận</button>
+          <p class="rsvp-status" id="rsvpStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section guestbook" id="guestbook">
+      <div class="guestbook__content">
+        <p class="eyebrow">Sổ lưu bút</p>
+        <h2>Gửi lời chúc</h2>
+        <p>Những lời chúc của Quý khách là kỷ niệm thật đẹp dành cho Hà & An.</p>
+        <button class="primary-btn" id="showGuestbookForm" type="button" aria-expanded="false" aria-controls="guestbookForm">Gửi lời chúc</button>
+        <form class="guestbook-form" id="guestbookForm" hidden>
+          <label>
+            <span>Tên của bạn</span>
+            <input id="guestbookName" name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Lời chúc</span>
+            <textarea id="guestbookMessage" name="message" rows="4" required></textarea>
+          </label>
+          <button class="primary-btn" type="submit">Gửi lời chúc</button>
+          <p class="rsvp-status" id="guestbookStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section gift" id="gift">
+      <div class="section__heading">
+        <p class="eyebrow">Hộp quà mừng</p>
+        <h2>Gửi chút thương mến</h2>
+      </div>
+      <p class="gift__note">Sự hiện diện của Quý khách là món quà quý nhất. Nếu muốn gửi lời chúc phúc từ xa, gia đình xin trân trọng ghi nhận.</p>
+      <div class="gift-grid" id="giftGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Hà & An</p>
+    <small>Hân hạnh được đón tiếp Quý khách.</small>
+  </footer>
+
+  <audio id="bgMusic" preload="none" loop>
+    <source src="" type="audio/mpeg" />
+  </audio>
+  <script src="gallery-manifest.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
