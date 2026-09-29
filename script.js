@@ -206,6 +206,7 @@ const elements = {
   guestbookForm: document.getElementById("guestbookForm"),
   guestbookName: document.getElementById("guestbookName"),
   guestbookMessage: document.getElementById("guestbookMessage"),
+  guestbookList: document.getElementById("guestbookList"),
   guestbookStatus: document.getElementById("guestbookStatus"),
   calendarPrimary: document.getElementById("calendarPrimary"),
   calendarSecondary: document.getElementById("calendarSecondary"),
@@ -402,6 +403,35 @@ function saveGuestbook(message) {
   localStorage.setItem("weddingGuestbookMessages", JSON.stringify(messages));
 }
 
+function getGuestbookMessages() {
+  return JSON.parse(localStorage.getItem("weddingGuestbookMessages") || "[]");
+}
+
+function renderGuestbookMessages() {
+  const messages = getGuestbookMessages().slice().reverse();
+  elements.guestbookList.replaceChildren();
+
+  if (!messages.length) {
+    elements.guestbookList.hidden = true;
+    return;
+  }
+
+  elements.guestbookList.hidden = false;
+  messages.forEach((message) => {
+    const item = document.createElement("article");
+    item.className = "guestbook-message";
+
+    const text = document.createElement("p");
+    text.textContent = message.message;
+
+    const name = document.createElement("strong");
+    name.textContent = message.name;
+
+    item.append(text, name);
+    elements.guestbookList.append(item);
+  });
+}
+
 function makeCalendarUrl(event) {
   const params = new URLSearchParams({
     action: "TEMPLATE",
@@ -454,6 +484,7 @@ function render() {
   renderGallery();
   renderHeroDates();
   renderWeddingCalendar();
+  renderGuestbookMessages();
   setActiveSegment();
   updateCalendarLinks();
   updateCountdown();
@@ -552,6 +583,7 @@ elements.guestbookForm.addEventListener("submit", (event) => {
   };
 
   saveGuestbook(message);
+  renderGuestbookMessages();
   elements.guestbookStatus.textContent = `Cảm ơn ${message.name} đã gửi lời chúc.`;
   elements.guestbookMessage.value = "";
 });

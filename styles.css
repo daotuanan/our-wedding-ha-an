@@ -1009,6 +1009,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .guestbook__content p:not(.eyebrow) { color: var(--muted); }
 
+.guestbook-list {
+  display: grid;
+  gap: 12px;
+  width: min(760px, 100%);
+  margin-top: 24px;
+}
+
+.guestbook-list[hidden] {
+  display: none;
+}
+
+.guestbook-message {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid rgba(143, 23, 24, 0.16);
+  background: rgba(255, 247, 235, 0.78);
+  box-shadow: 0 12px 28px rgba(83, 57, 32, 0.06);
+}
+
+.guestbook-message p {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.guestbook-message strong {
+  color: var(--red);
+  font-family: var(--serif);
+  font-size: 18px;
+}
+
 .rsvp-form,
 .guestbook-form {
   display: grid;
