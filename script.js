@@ -5,7 +5,7 @@ const wedding = {
     "nha-gai": {
       label: "Nhà gái",
       greeting: "Bạn bè nhà gái",
-      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu tại Gia Lai.",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương tại Gia Lai.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
@@ -13,7 +13,7 @@ const wedding = {
     "nha-trai": {
       label: "Nhà trai",
       greeting: "Bạn bè nhà trai",
-      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu tại TP. Hồ Chí Minh.",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương tại TP. Hồ Chí Minh.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
@@ -21,7 +21,7 @@ const wedding = {
     both: {
       label: "Hai gia đình",
       greeting: "Bạn thương mến",
-      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu.",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
@@ -222,14 +222,39 @@ function eventMatchesGroup(item) {
   return currentGroup === "both" || item.group === currentGroup;
 }
 
+function setTextWithNoOrphan(element, text, prefix = "") {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  element.replaceChildren();
+  if (prefix) {
+    const prefixSpan = document.createElement("span");
+    prefixSpan.className = "nowrap";
+    prefixSpan.textContent = prefix.trim();
+    element.append(prefixSpan, document.createTextNode(" "));
+  }
+
+  if (words.length <= 3) {
+    const span = document.createElement("span");
+    span.className = "nowrap";
+    span.textContent = words.join(" ");
+    element.append(span);
+    return;
+  }
+
+  element.append(document.createTextNode(`${words.slice(0, -2).join(" ")} `));
+  const span = document.createElement("span");
+  span.className = "nowrap";
+  span.textContent = words.slice(-2).join(" ");
+  element.append(span);
+}
+
 function setText() {
   const group = wedding.groups[currentGroup];
   elements.coverGuest.textContent = guestName;
   elements.heroSubtitle.textContent = group.subtitle;
-  elements.guestGreeting.textContent = guestName;
+  setTextWithNoOrphan(elements.guestGreeting, guestName);
   elements.invitationCopy.textContent = group.copy;
   elements.countdownTitle.textContent = group.countdownTitle;
-  elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
+  setTextWithNoOrphan(elements.rsvpTitle, guestName, "Hẹn gặp ");
   elements.rsvpName.value = guestName;
   elements.rsvpGroup.value = currentGroup;
   elements.guestbookName.value = guestName;
