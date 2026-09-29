@@ -4,25 +4,25 @@ const wedding = {
   groups: {
     "nha-gai": {
       label: "Nhà gái",
-      greeting: "Quý khách mời nhà gái",
-      subtitle: "Đến dự bữa tiệc chung vui cùng gia đình chúng tôi tại Gia Lai.",
-      copy: "Hôn lễ được cử hành vào lúc 08:00, Thứ Hai 26.10.2026.",
+      greeting: "Bạn bè nhà gái",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu tại Gia Lai.",
+      copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
     "nha-trai": {
       label: "Nhà trai",
-      greeting: "Quý khách mời nhà trai",
-      subtitle: "Đến dự bữa tiệc chung vui cùng gia đình chúng tôi tại TP. Hồ Chí Minh.",
-      copy: "Hôn lễ được cử hành vào lúc 09:00, Thứ Sáu 30.10.2026.",
+      greeting: "Bạn bè nhà trai",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu tại TP. Hồ Chí Minh.",
+      copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
     both: {
       label: "Hai gia đình",
-      greeting: "Quý khách",
-      subtitle: "Đến dự bữa tiệc chung vui cùng hai gia đình chúng tôi.",
-      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho hai gia đình.",
+      greeting: "Bạn thương mến",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy tình yêu.",
+      copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     }
@@ -139,7 +139,7 @@ const calendarEvents = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const guestName = params.get("to")?.trim() || "Quý khách";
+const guestName = params.get("to")?.trim() || "bạn thương mến";
 const guestId = params.get("id")?.trim() || "";
 let currentGroup = wedding.groups[params.get("type")] ? params.get("type") : "both";
 let countdownTimer;
@@ -225,9 +225,9 @@ function eventMatchesGroup(item) {
 function setText() {
   const group = wedding.groups[currentGroup];
   elements.coverGuest.textContent = guestName;
-  elements.heroSubtitle.textContent = group.subtitle.replace("Quý khách", guestName);
+  elements.heroSubtitle.textContent = group.subtitle;
   elements.guestGreeting.textContent = guestName;
-  elements.invitationCopy.textContent = group.copy.replace("Quý khách", guestName);
+  elements.invitationCopy.textContent = group.copy;
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
   elements.rsvpName.value = guestName;
