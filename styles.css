@@ -441,6 +441,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .section__heading h2 span { color: var(--gold); }
 
+.nowrap { white-space: nowrap; }
+
 #guestGreeting {
   display: block;
   margin-top: 8px;
