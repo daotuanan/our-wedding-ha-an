@@ -1,5 +1,6 @@
 const wedding = {
   rsvpEndpoint: "",
+  guestbookEndpoint: "",
   groups: {
     "nha-gai": {
       label: "Nhà gái",
@@ -145,6 +146,7 @@ let countdownTimer;
 let galleryIndex = 0;
 let galleryDirection = 1;
 let galleryTimer;
+let remoteGuestbookMessages = [];
 const galleryIntervalMs = 2000;
 
 const weddingDates = {
@@ -404,7 +406,40 @@ function saveGuestbook(message) {
 }
 
 function getGuestbookMessages() {
-  return JSON.parse(localStorage.getItem("weddingGuestbookMessages") || "[]");
+  const localMessages = JSON.parse(localStorage.getItem("weddingGuestbookMessages") || "[]");
+  const messages = [...remoteGuestbookMessages, ...localMessages];
+  const seen = new Set();
+  return messages.filter((message) => {
+    const key = [message.submittedAt, message.name, message.message].join("|");
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return message.name && message.message;
+  });
+}
+
+function loadGuestbookMessagesFromSheet() {
+  if (!wedding.guestbookEndpoint) return;
+
+  const callbackName = `receiveGuestbook${Date.now()}`;
+  const script = document.createElement("script");
+  const url = new URL(wedding.guestbookEndpoint);
+  url.searchParams.set("action", "guestbook");
+  url.searchParams.set("callback", callbackName);
+
+  window[callbackName] = (messages) => {
+    remoteGuestbookMessages = Array.isArray(messages) ? messages : [];
+    renderGuestbookMessages();
+    script.remove();
+    delete window[callbackName];
+  };
+
+  script.onerror = () => {
+    script.remove();
+    delete window[callbackName];
+  };
+
+  script.src = url.toString();
+  document.body.append(script);
 }
 
 function renderGuestbookMessages() {
@@ -485,6 +520,7 @@ function render() {
   renderHeroDates();
   renderWeddingCalendar();
   renderGuestbookMessages();
+  loadGuestbookMessagesFromSheet();
   setActiveSegment();
   updateCalendarLinks();
   updateCountdown();
@@ -573,7 +609,7 @@ elements.rsvpForm.addEventListener("submit", async (event) => {
     : `Đã ghi nhận phản hồi của ${response.name}.`;
 });
 
-elements.guestbookForm.addEventListener("submit", (event) => {
+elements.guestbookForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const message = {
     guestId,
@@ -584,6 +620,16 @@ elements.guestbookForm.addEventListener("submit", (event) => {
 
   saveGuestbook(message);
   renderGuestbookMessages();
+
+  if (wedding.guestbookEndpoint) {
+    await fetch(wedding.guestbookEndpoint, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "guestbook", ...message })
+    });
+  }
+
   elements.guestbookStatus.textContent = `Cảm ơn ${message.name} đã gửi lời chúc.`;
   elements.guestbookMessage.value = "";
 });
