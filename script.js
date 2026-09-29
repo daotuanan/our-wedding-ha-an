@@ -5,7 +5,7 @@ const wedding = {
     "nha-gai": {
       label: "Nhà gái",
       greeting: "Bạn bè nhà gái",
-      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương tại Gia Lai.",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
@@ -13,7 +13,7 @@ const wedding = {
     "nha-trai": {
       label: "Nhà trai",
       greeting: "Bạn bè nhà trai",
-      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương tại TP. Hồ Chí Minh.",
+      subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
