@@ -329,6 +329,46 @@ button, a { -webkit-tap-highlight-color: transparent; }
   gap: 12px;
 }
 
+.music-float {
+  position: fixed;
+  right: clamp(16px, 4vw, 30px);
+  bottom: clamp(18px, 4vw, 34px);
+  z-index: 8;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(233, 189, 104, 0.72);
+  border-radius: 50%;
+  color: #fffaf2;
+  background: rgba(143, 23, 24, 0.88);
+  box-shadow: 0 16px 34px rgba(79, 13, 13, 0.24);
+  cursor: pointer;
+  transition: transform 220ms ease, background-color 220ms ease, opacity 220ms ease;
+}
+
+.music-float[hidden] {
+  display: none;
+}
+
+.music-float:hover {
+  transform: translateY(-2px);
+}
+
+.music-float span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.music-float.is-playing span {
+  animation: musicBeat 1.4s ease-in-out infinite;
+}
+
+.music-float:not(.is-playing) {
+  opacity: 0.72;
+  background: rgba(79, 13, 13, 0.76);
+}
+
 .primary-btn, .ghost-btn {
   display: inline-flex;
   min-height: 46px;
@@ -1081,6 +1121,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes sealPulse {
   0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(233, 189, 104, 0); }
   50% { transform: scale(1.035); box-shadow: 0 0 28px rgba(233, 189, 104, 0.24); }
+}
+
+@keyframes musicBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
 }
 
 @media (prefers-reduced-motion: reduce) {

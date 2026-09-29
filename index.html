@@ -40,7 +40,6 @@
       <div class="hero__dates" id="heroDates" aria-label="Ngày tổ chức"></div>
       <div class="hero__actions">
         <a class="primary-btn" href="#schedule">Xem lịch trình</a>
-        <button class="ghost-btn" id="musicToggle" type="button" aria-pressed="false">Nhạc nền</button>
       </div>
     </div>
   </header>
@@ -224,6 +223,9 @@
   <audio id="bgMusic" preload="none" loop>
     <source src="music/leberch-invitation-wedding-375839.mp3" type="audio/mpeg" />
   </audio>
+  <button class="music-float" id="musicToggle" type="button" aria-label="Tắt nhạc nền" aria-pressed="true" hidden>
+    <span aria-hidden="true">♪</span>
+  </button>
   <script src="gallery-manifest.js"></script>
   <script src="script.js"></script>
 </body>

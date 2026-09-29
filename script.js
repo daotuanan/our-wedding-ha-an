@@ -490,6 +490,7 @@ document.querySelectorAll("[data-group]").forEach((button) => {
 elements.openInvitation.addEventListener("click", () => {
   document.body.classList.add("invitation-open");
   window.setTimeout(() => elements.cover.setAttribute("hidden", ""), 450);
+  playBackgroundMusic();
 });
 
 elements.galleryPrev.addEventListener("click", () => moveGalleryManually(-1));
@@ -555,25 +556,35 @@ elements.guestbookForm.addEventListener("submit", (event) => {
   elements.guestbookMessage.value = "";
 });
 
-elements.musicToggle.addEventListener("click", async () => {
+function setMusicButton(isPlaying) {
+  elements.musicToggle.hidden = false;
+  elements.musicToggle.classList.toggle("is-playing", isPlaying);
+  elements.musicToggle.setAttribute("aria-pressed", String(isPlaying));
+  elements.musicToggle.setAttribute("aria-label", isPlaying ? "Tắt nhạc nền" : "Mở nhạc nền");
+}
+
+async function playBackgroundMusic() {
   if (!elements.bgMusic.querySelector("source")?.getAttribute("src")) {
-    elements.musicToggle.textContent = "Chưa có nhạc";
-    return;
+    elements.musicToggle.hidden = true;
+    return false;
   }
 
+  setMusicButton(true);
+  try {
+    await elements.bgMusic.play();
+    return true;
+  } catch {
+    setMusicButton(false);
+    return false;
+  }
+}
+
+elements.musicToggle.addEventListener("click", () => {
   if (elements.bgMusic.paused) {
-    elements.musicToggle.textContent = "Tắt nhạc";
-    elements.musicToggle.setAttribute("aria-pressed", "true");
-    try {
-      await elements.bgMusic.play();
-    } catch {
-      elements.musicToggle.textContent = "Nhạc nền";
-      elements.musicToggle.setAttribute("aria-pressed", "false");
-    }
+    playBackgroundMusic();
   } else {
     elements.bgMusic.pause();
-    elements.musicToggle.textContent = "Nhạc nền";
-    elements.musicToggle.setAttribute("aria-pressed", "false");
+    setMusicButton(false);
   }
 });
 
