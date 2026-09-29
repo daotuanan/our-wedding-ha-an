@@ -10,7 +10,7 @@ cover_image="$gallery_dir/1.jpg"
 if [[ -f "$cover_image" ]]; then
   images=("$cover_image" ${images:#$cover_image})
 fi
-excluded_files=(071A6482.JPG 071A6542.JPG 071A6587.JPG)
+excluded_files=(071A6482.JPG 071A6542.JPG 071A6587.JPG 071A6484.JPG 071A6892.JPG 071A6989.JPG 071A7022.JPG 071A7032.JPG 071A7169.JPG 071A7178.JPG)
 for excluded_file in "${excluded_files[@]}"; do
   excluded_image="$gallery_dir/$excluded_file"
   images=(${images:#$excluded_image})
