@@ -200,6 +200,7 @@ const elements = {
   showRsvpForm: document.getElementById("showRsvpForm"),
   rsvpForm: document.getElementById("rsvpForm"),
   rsvpName: document.getElementById("rsvpName"),
+  rsvpPrivateNote: document.getElementById("rsvpPrivateNote"),
   rsvpTitle: document.getElementById("rsvpTitle"),
   rsvpGroup: document.getElementById("rsvpGroup"),
   rsvpAttend: document.getElementById("rsvpAttend"),
@@ -256,6 +257,7 @@ function setText() {
   elements.countdownTitle.textContent = group.countdownTitle;
   setTextWithNoOrphan(elements.rsvpTitle, guestName, "Hẹn gặp ");
   elements.rsvpName.value = guestName;
+  elements.rsvpPrivateNote.textContent = `Link này được gửi riêng cho ${guestName}. Nếu bạn không phải ${guestName}, vui lòng nhắn Hà & An để nhận thiệp riêng nhé.`;
   elements.rsvpGroup.value = currentGroup;
   elements.guestbookName.value = guestName;
   document.title = `Thiệp cưới Hà & An - ${guestName}`;

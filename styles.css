@@ -1115,6 +1115,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   cursor: not-allowed;
 }
 
+.rsvp-private-note {
+  grid-column: 1 / -1;
+  margin: -4px 0 2px;
+  color: rgba(255, 250, 242, 0.72);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .rsvp-form__wide,
 .rsvp-form button,
 .guestbook-form label,
