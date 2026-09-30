@@ -44,13 +44,13 @@ const wedding = {
     { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Cưới", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
   ],
   locations: [
-    { group: "nha-gai", title: "Tư gia cô dâu", address: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "assets/qr_nha_gai.png" },
-    { group: "nha-trai", title: "Tư gia chú rể", address: "13/5 Nguyễn Văn Yến, phường Phú Thạnh, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9", qr: "assets/qr_nha_trai.png" },
-    { group: "nha-trai", title: "Sảnh Tình Yêu", address: "Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, phường Tân Phú, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7", qr: "assets/qr_nha_trai_le.png" }
+    { group: "nha-gai", title: "Tư gia cô dâu", address: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "../assets/qr_nha_gai.png" },
+    { group: "nha-trai", title: "Tư gia chú rể", address: "13/5 Nguyễn Văn Yến, phường Phú Thạnh, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9", qr: "../assets/qr_nha_trai.png" },
+    { group: "nha-trai", title: "Sảnh Tình Yêu", address: "Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, phường Tân Phú, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7", qr: "../assets/qr_nha_trai_le.png" }
   ],
   gifts: [
-    { group: "nha-gai", title: "Hộp quà nhà gái", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" },
-    { group: "nha-trai", title: "Hộp quà nhà trai", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" }
+    { group: "nha-gai", title: "Hộp quà nhà gái", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "../BankAccount/CD_bank_account.JPG" },
+    { group: "nha-trai", title: "Hộp quà nhà trai", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "../BankAccount/CD_bank_account.JPG" }
   ]
 };
 
@@ -63,7 +63,7 @@ const galleryImages = [
   "071A6942.webp",
   "071A7005.webp",
   "071A7215.webp"
-].map((name, index) => ({ src: `gallery/optimized/${name}`, alt: `Ảnh cưới Hà và An ${index + 1}` }));
+].map((name, index) => ({ src: `../gallery/optimized/${name}`, alt: `Ảnh cưới Hà và An ${index + 1}` }));
 
 const calendarEvents = {
   "nha-gai": {
@@ -182,7 +182,7 @@ function updateText() {
   elements.wishName.value = guestName;
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
-  document.title = `Thiệp cưới Hà & An - ${guestName}`;
+  document.title = `Beta1 - Thiệp cưới Hà & An - ${guestName}`;
 }
 
 function renderHomeDates() {
@@ -497,7 +497,7 @@ function setupGalleryMotion() {
 }
 
 function getWishes() {
-  const localMessages = JSON.parse(localStorage.getItem("weddingGuestbookMessages") || "[]");
+  const localMessages = JSON.parse(localStorage.getItem("beta1WeddingWishes") || "[]");
   const messages = [...remoteGuestbookMessages, ...localMessages];
   const seen = new Set();
   return messages.filter((message) => {
@@ -528,13 +528,13 @@ function renderWishes() {
 function saveWish(name, message) {
   const wishes = getWishes();
   wishes.push({ name, message, submittedAt: new Date().toISOString() });
-  localStorage.setItem("weddingGuestbookMessages", JSON.stringify(wishes));
+  localStorage.setItem("beta1WeddingWishes", JSON.stringify(wishes));
 }
 
 function saveRsvp(response) {
-  const responses = JSON.parse(localStorage.getItem("weddingRsvpResponses") || "[]");
+  const responses = JSON.parse(localStorage.getItem("beta1WeddingRsvpResponses") || "[]");
   responses.push(response);
-  localStorage.setItem("weddingRsvpResponses", JSON.stringify(responses));
+  localStorage.setItem("beta1WeddingRsvpResponses", JSON.stringify(responses));
 }
 
 function loadGuestbookMessagesFromSheet() {

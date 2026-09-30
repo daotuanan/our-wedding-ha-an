@@ -66,7 +66,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background:
     linear-gradient(180deg, rgba(29, 3, 4, 0.15), rgba(29, 3, 4, 0.82)),
-    url("assets/optimized/background.webp") center/cover;
+    url("../assets/optimized/background.webp") center/cover;
   opacity: 0.88;
 }
 
@@ -209,14 +209,14 @@ img { max-width: 100%; display: block; }
 .desktop-scene__slide {
   position: absolute;
   inset: 0;
-  background: url("assets/optimized/background.webp") 42% 58%/cover;
+  background: url("../assets/optimized/background.webp") 42% 58%/cover;
   opacity: 0;
   transform: scale(1.04);
   transition: opacity 1400ms ease, transform 7200ms linear;
 }
 
 .desktop-scene__slide--alt {
-  background-image: url("gallery/optimized/071A6892.webp");
+  background-image: url("../gallery/optimized/071A6892.webp");
   background-position: 48% 50%;
 }
 
