@@ -830,7 +830,13 @@ img { max-width: 100%; display: block; }
   text-align: left;
 }
 
-.form-status { min-height: 1.4em; text-align: center; }
+.form-status {
+  min-height: 3.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .wish-list { margin-top: 18px; text-align: left; }
 
