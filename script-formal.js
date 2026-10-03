@@ -7,7 +7,7 @@ const wedding = {
       greeting: "Quý khách",
       subtitle: "Kính mời Quý khách đến chung vui cùng gia đình chúng tôi.",
       invitationGreeting: "Gia đình chúng tôi trân trọng kính mời Quý khách đến dự lễ Vu Quy của hai cháu Hà và An.",
-      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi trong ngày vui của hai cháu.",
+      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi",
       coverDate: "26.10.2026 • 17.09 ÂL",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
@@ -17,7 +17,7 @@ const wedding = {
       greeting: "Quý khách",
       subtitle: "Kính mời Quý khách đến chung vui cùng gia đình chúng tôi.",
       invitationGreeting: "Gia đình chúng tôi trân trọng kính mời Quý khách đến dự lễ Tân Hôn của hai cháu Hà và An.",
-      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi trong ngày vui của hai cháu.",
+      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi",
       coverDate: "30.10.2026 • 21.09 ÂL",
       countdownTitle: "Lễ Tân Hôn tại TP.\u00a0Hồ\u00a0Chí\u00a0Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
@@ -27,7 +27,7 @@ const wedding = {
       greeting: "Quý khách",
       subtitle: "Kính mời Quý khách đến chung vui cùng hai gia đình.",
       invitationGreeting: "Gia đình chúng tôi trân trọng kính mời Quý khách đến dự hôn lễ của hai cháu Hà và An.",
-      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi trong ngày vui của hai cháu.",
+      copy: "Sự hiện diện của Quý khách là niềm vinh hạnh cho gia đình chúng tôi",
       coverDate: "26.10.2026 • 17.09 ÂL | 30.10.2026 • 21.09 ÂL",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
