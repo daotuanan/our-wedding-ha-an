@@ -225,7 +225,6 @@ function updateText() {
   elements.wishName.readOnly = Boolean(customGuestName);
   elements.wishName.placeholder = "Nhập tên Thầy/Cô";
   elements.wishIntro.textContent = `Những lời chúc của ${guestName} sẽ là kỷ niệm quý báu dành cho gia đình và ${pronounLower}.`;
-  elements.giftIntro.textContent = `Sự hiện diện và lời chúc của ${guestName} là món quà quý nhất đối với gia đình và ${pronounLower}.`;
   elements.closingIntro.textContent = `Gia đình ${pronounLower} rất hân hạnh được đón tiếp ${guestName} trong ngày vui của Hà và An.`;
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
@@ -285,6 +284,8 @@ function renderLocations() {
 }
 
 function renderGifts() {
+  if (!elements.giftList) return;
+
   elements.giftList.innerHTML = wedding.gifts.filter(matchesGroup).map((gift) => `
     <article class="gift-card">
       <small>${gift.group === "nha-gai" ? "Nhà gái" : "Nhà trai"}</small>
