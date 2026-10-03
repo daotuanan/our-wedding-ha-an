@@ -7,6 +7,7 @@ const wedding = {
       greeting: "Bạn bè nhà gái",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "26.10.2026 • 17.09 ÂL",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
@@ -15,6 +16,7 @@ const wedding = {
       greeting: "Bạn bè nhà trai",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "30.10.2026 • 21.09 ÂL",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
@@ -23,6 +25,7 @@ const wedding = {
       greeting: "Bạn thương mến",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "26.10.2026 • 17.09 ÂL | 30.10.2026 • 21.09 ÂL",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     }
@@ -109,6 +112,7 @@ const elements = {
   welcome: document.getElementById("welcome"),
   openInvite: document.getElementById("openInvite"),
   welcomeGuest: document.getElementById("welcomeGuest"),
+  welcomeDate: document.getElementById("welcomeDate"),
   invite: document.getElementById("invite"),
   homeGreeting: document.getElementById("homeGreeting"),
   homeDates: document.getElementById("homeDates"),
@@ -169,6 +173,7 @@ function makeCalendarUrl(event) {
 function updateText() {
   const group = wedding.groups[currentGroup];
   elements.welcomeGuest.textContent = guestName;
+  elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
   renderHomeDates();
   elements.guestNameTitle.textContent = guestName;
