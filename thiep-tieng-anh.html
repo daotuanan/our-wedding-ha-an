@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ha and An wedding invitation" />
+  <meta name="theme-color" content="#8f1718" />
+  <title>Ha & An Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/optimized/background.webp" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="welcome" id="welcome" aria-live="polite">
+    <div class="welcome__bg" aria-hidden="true"></div>
+    <div class="welcome__panel">
+      <p class="overline">Wedding invitation</p>
+      <img src="assets/optimized/background.webp" alt="Ha and An" class="welcome__photo" width="150" height="150" decoding="async" fetchpriority="high" />
+      <h1>Hà <span>&</span> An</h1>
+      <p class="welcome__date" id="welcomeDate">26.10.2026 • 30.10.2026</p>
+      <div class="guest-box">
+        <p>Dear <strong id="welcomeGuest">friend</strong>, we warmly invite you to celebrate with us</p>
+      </div>
+      <button class="button button--light" id="openInvite" type="button">Open invitation</button>
+    </div>
+  </div>
+
+  <div class="stage" id="top">
+    <aside class="desktop-scene" aria-hidden="true">
+      <div class="desktop-scene__slide is-active"></div>
+      <div class="desktop-scene__slide desktop-scene__slide--alt"></div>
+      <div class="desktop-scene__content">
+        <p class="overline">Celebrate with us</p>
+        <h2>Hà & An</h2>
+        <p>With love, we invite you to our wedding celebration.</p>
+      </div>
+    </aside>
+
+    <div class="phone-shell">
+      <main class="invite" id="invite" tabindex="-1">
+        <section class="home panel" id="home">
+          <img src="assets/optimized/background.webp" alt="Ha and An wedding photo" class="home__image" width="1920" height="2880" decoding="async" fetchpriority="high" />
+          <div class="home__content">
+            <p class="overline">Celebrate with us</p>
+            <h2>Hà <span>&</span> An</h2>
+            <p id="homeGreeting">With love, we invite you to our wedding celebration.</p>
+            <div class="home-dates" id="homeDates" aria-label="Wedding dates, times, and locations"></div>
+            <a class="button" id="saveCalendar" href="#" target="_blank" rel="noreferrer">Add to calendar</a>
+          </div>
+        </section>
+
+        <section class="panel invitation" id="invitation">
+          <p class="overline">Invitation</p>
+          <h2>Dear <span id="guestNameTitle">friend</span></h2>
+          <p id="invitationGreeting">With love, we invite you to our wedding celebration!</p>
+          <p id="invitationCopy">You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.</p>
+          <div class="parents">
+            <article data-parent-group="nha-gai">
+              <span>Bride's family</span>
+              <strong>Mr. Dao Thanh Vui</strong>
+              <strong>Mrs. Vo Thi Hoa</strong>
+              <small>Gia Lai</small>
+            </article>
+            <article data-parent-group="nha-trai">
+              <span>Groom's family</span>
+              <strong>Mr. Dao Tuan Anh</strong>
+              <strong>Mrs. Dong Thi Thanh Thuy</strong>
+              <small>Ho Chi Minh City</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel couple" id="couple">
+          <p class="overline">Bride & Groom</p>
+          <div class="couple__grid">
+            <article class="person">
+              <img src="assets/optimized/CD.webp" alt="Bride Ha" width="190" height="190" loading="lazy" decoding="async" />
+              <h3>Ha</h3>
+            </article>
+            <article class="person person--offset">
+              <img src="assets/optimized/CR.webp" alt="Groom An" width="190" height="190" loading="lazy" decoding="async" />
+              <h3>An</h3>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel countdown" id="date">
+          <p class="overline">Countdown</p>
+          <h2 id="countdownTitle">Bride's ceremony in Gia Lai</h2>
+          <div class="countdown__grid" aria-label="Wedding countdown">
+            <div><strong id="days">00</strong><span>Days</span></div>
+            <div><strong id="hours">00</strong><span>Hours</span></div>
+            <div><strong id="minutes">00</strong><span>Minutes</span></div>
+            <div><strong id="seconds">00</strong><span>Seconds</span></div>
+          </div>
+          <div class="date-cards" id="dateCards"></div>
+        </section>
+
+        <section class="panel story" id="story">
+          <p class="overline">Schedule</p>
+          <h2>Key moments</h2>
+          <div class="tabs" role="tablist" aria-label="Guest group">
+            <button type="button" data-group="nha-gai">Bride's family</button>
+            <button type="button" data-group="nha-trai">Groom's family</button>
+            <button type="button" data-group="both">Both</button>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <section class="panel locations" id="location">
+          <p class="overline">Locations</p>
+          <h2>Maps & direction QR codes</h2>
+          <div class="location-list" id="locationList"></div>
+        </section>
+
+        <section class="panel gallery" id="gallery">
+          <p class="overline">Album</p>
+          <h2>Our moments</h2>
+          <div class="gallery-frame">
+            <button class="gallery-btn gallery-btn--prev" id="galleryPrev" type="button" aria-label="Previous photo">‹</button>
+            <div class="gallery-viewport" id="galleryViewport">
+              <img class="gallery-image" id="galleryImage" src="gallery/optimized/1.webp" alt="Ha and An wedding photo" width="1200" height="1801" loading="lazy" decoding="async" />
+            </div>
+            <button class="gallery-btn gallery-btn--next" id="galleryNext" type="button" aria-label="Next photo">›</button>
+          </div>
+          <p class="gallery-count" id="galleryCount">1 / 1</p>
+          <div class="gallery-dots" id="galleryDots" aria-label="Photo position in the album"></div>
+        </section>
+
+        <section class="panel rsvp" id="rsvp">
+          <p class="overline">RSVP</p>
+          <h2 id="rsvpTitle">Hope to see you there</h2>
+          <p>Please confirm your attendance so we can warmly prepare to welcome you.</p>
+          <button class="button" id="showRsvpForm" type="button" aria-expanded="false" aria-controls="rsvpForm">RSVP</button>
+          <form class="rsvp-form" id="rsvpForm" hidden>
+            <label>
+              <span>Guest name</span>
+              <input id="rsvpName" name="name" type="text" autocomplete="name" readonly required />
+            </label>
+            <p class="rsvp-private-note" id="rsvpPrivateNote"></p>
+            <label>
+              <span>Guest group</span>
+              <select id="rsvpGroup" name="group" required>
+                <option value="nha-gai">Bride's family</option>
+                <option value="nha-trai">Groom's family</option>
+                <option value="both">Both families</option>
+              </select>
+            </label>
+            <label>
+              <span>Attendance</span>
+              <select id="rsvpAttend" name="attend" required>
+                <option value="yes">Will attend</option>
+                <option value="no">Sorry, cannot attend</option>
+              </select>
+            </label>
+            <label>
+              <span>Number of guests</span>
+              <input id="rsvpGuests" name="guests" type="number" min="1" max="10" value="1" required />
+            </label>
+            <label>
+              <span>Phone number</span>
+              <input id="rsvpPhone" name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <button class="button" type="submit">Send RSVP</button>
+            <p class="form-status" id="rsvpStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel wishes" id="wishes">
+          <p class="overline">Wishes</p>
+          <h2>Send your wishes</h2>
+          <p>Your wishes will become a beautiful memory for us.</p>
+          <form class="wish-form" id="wishForm">
+            <label>
+              <span>Your name</span>
+              <input id="wishName" type="text" required autocomplete="name" />
+            </label>
+            <label>
+              <span>Your wishes</span>
+              <textarea id="wishMessage" rows="4" required></textarea>
+            </label>
+            <button class="button" type="submit">Send wishes</button>
+            <p class="form-status" id="wishStatus" role="status"></p>
+          </form>
+        </section>
+
+        <section class="panel gift" id="gift">
+          <p class="overline">Wedding gift</p>
+          <h2>Send a gift</h2>
+          <p>Your presence is the most precious gift. If you would like to send your blessings from afar, we would be truly grateful.</p>
+          <div class="gift-list" id="giftList"></div>
+        </section>
+
+        <section class="panel guestbook-wall" id="guestbookWall">
+          <p class="overline">Guestbook</p>
+          <h2>Wishes from everyone</h2>
+          <div class="wish-list" id="wishList" aria-live="polite"></div>
+        </section>
+
+        <section class="panel closing">
+          <p>Our special day will be even more meaningful with special people by our side. We hope you and your family can celebrate with us!</p>
+          <h2>Hà & An</h2>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Invitation navigation">
+        <a href="#home"><span>⌂</span>Home</a>
+        <a href="#couple"><span>♡</span>Couple</a>
+        <a href="#date"><span>□</span>Date</a>
+        <a href="#gallery"><span>▣</span>Photos</a>
+        <a href="#rsvp"><span>✓</span>RSVP</a>
+        <a href="#wishes"><span>✎</span>Wishes</a>
+      </nav>
+    </div>
+  </div>
+
+  <button class="music-button" id="musicButton" type="button" aria-label="Turn music on or off" aria-pressed="false" hidden>♪</button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="music/leberch-invitation-wedding-375839.mp3" type="audio/mpeg" />
+  </audio>
+  <script src="script-en.js"></script>
+</body>
+</html>
