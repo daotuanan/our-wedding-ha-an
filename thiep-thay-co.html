@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thiệp mời hôn lễ Hà và An dành cho thầy cô" />
+  <meta name="theme-color" content="#8f1718" />
+  <title>Thiệp mời thầy cô | Hà & An</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/optimized/background.webp" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles-formal.css" />
+</head>
+<body>
+  <div class="welcome" id="welcome" aria-live="polite">
+    <div class="welcome__bg" aria-hidden="true"></div>
+    <div class="welcome__panel">
+      <p class="overline">Song hỷ</p>
+      <img src="assets/optimized/background.webp" alt="Hà và An" class="welcome__photo" width="150" height="150" decoding="async" fetchpriority="high" />
+      <h1>Hà <span>&</span> An</h1>
+      <p class="welcome__date" id="welcomeDate">26.10.2026 • 17.09 ÂL</p>
+      <div class="guest-box">
+        <p>Trân trọng kính mời <strong id="welcomeGuest">Thầy Cô</strong> đến dự hôn lễ</p>
+      </div>
+      <button class="button button--light" id="openInvite" type="button">Mở thiệp</button>
+    </div>
+  </div>
+
+  <div class="stage" id="top">
+    <aside class="desktop-scene" aria-hidden="true">
+      <div class="desktop-scene__slide is-active"></div>
+      <div class="desktop-scene__slide desktop-scene__slide--alt"></div>
+      <div class="desktop-scene__content">
+        <p class="overline">Kính mời thầy cô</p>
+        <h2>Hà & An</h2>
+        <p id="desktopGreeting">Tụi em kính mời Thầy Cô đến chung vui cùng hai gia đình.</p>
+      </div>
+    </aside>
+
+    <div class="phone-shell">
+      <main class="invite" id="invite" tabindex="-1">
+        <section class="home panel" id="home">
+          <img src="assets/optimized/background.webp" alt="Ảnh cưới Hà và An" class="home__image" width="1920" height="2880" decoding="async" fetchpriority="high" />
+          <div class="home__content">
+            <p class="overline">Kính mời thầy cô</p>
+            <h2>Hà <span>&</span> An</h2>
+            <p id="homeGreeting">Tụi em kính mời Thầy Cô đến chung vui cùng hai gia đình.</p>
+            <div class="home-dates" id="homeDates" aria-label="Ngày giờ và địa điểm tổ chức"></div>
+            <a class="button" id="saveCalendar" href="#" target="_blank" rel="noreferrer">Thêm vào lịch</a>
+          </div>
+        </section>
+
+        <section class="panel invitation" id="invitation">
+          <p class="overline">Thiệp mời</p>
+          <h2>Trân trọng kính mời <span id="guestNameTitle">Thầy Cô</span></h2>
+          <p id="invitationGreeting">Tụi em trân trọng kính mời Thầy Cô đến dự hôn lễ của tụi em.</p>
+          <p id="invitationCopy">Sự hiện diện và lời chúc phúc của Thầy Cô là niềm vinh hạnh lớn cho hai gia đình trong ngày vui của tụi em.</p>
+          <div class="parents">
+            <article data-parent-group="nha-gai">
+              <span>Nhà gái</span>
+              <strong>Ông Đào Thanh Vui</strong>
+              <strong>Bà Võ Thị Hoa</strong>
+              <small>Gia Lai</small>
+            </article>
+            <article data-parent-group="nha-trai">
+              <span>Nhà trai</span>
+              <strong>Ông Đào Tuấn Anh</strong>
+              <strong>Bà Đồng Thị Thanh Thuý</strong>
+              <small>TP. Hồ Chí Minh</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel couple" id="couple">
+          <p class="overline">Cô dâu & chú rể</p>
+          <div class="couple__grid">
+            <article class="person">
+              <img src="assets/optimized/CD.webp" alt="Cô dâu Hà" width="190" height="190" loading="lazy" decoding="async" />
+              <h3>Hà</h3>
+            </article>
+            <article class="person person--offset">
+              <img src="assets/optimized/CR.webp" alt="Chú rể An" width="190" height="190" loading="lazy" decoding="async" />
+              <h3>An</h3>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel countdown" id="date">
+          <p class="overline">Đếm ngược</p>
+          <h2 id="countdownTitle">Lễ Vu Quy tại Gia Lai</h2>
+          <div class="countdown__grid" aria-label="Đếm ngược ngày cưới">
+            <div><strong id="days">00</strong><span>Ngày</span></div>
+            <div><strong id="hours">00</strong><span>Giờ</span></div>
+            <div><strong id="minutes">00</strong><span>Phút</span></div>
+            <div><strong id="seconds">00</strong><span>Giây</span></div>
+          </div>
+          <div class="date-cards" id="dateCards"></div>
+        </section>
+
+        <section class="panel story" id="story">
+          <p class="overline">Lịch trình nghi lễ</p>
+          <h2>Các mốc thời gian chính</h2>
+          <div class="tabs" role="tablist" aria-label="Nhóm khách mời">
+            <button type="button" data-group="nha-gai">Nhà gái</button>
+            <button type="button" data-group="nha-trai">Nhà trai</button>
+            <button type="button" data-group="both">Tất cả</button>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <section class="panel locations" id="location">
+          <p class="overline">Địa điểm tổ chức</p>
+          <h2>Bản đồ & mã QR chỉ đường</h2>
+          <div class="location-list" id="locationList"></div>
+        </section>
+
+        <section class="panel gallery" id="gallery">
+          <p class="overline">Album</p>
+          <h2>Khoảnh khắc của chúng tôi</h2>
+          <div class="gallery-frame">
+            <button class="gallery-btn gallery-btn--prev" id="galleryPrev" type="button" aria-label="Ảnh trước">‹</button>
+            <div class="gallery-viewport" id="galleryViewport">
+              <img class="gallery-image" id="galleryImage" src="gallery/optimized/1.webp" alt="Ảnh cưới Hà và An" width="1200" height="1801" loading="lazy" decoding="async" />
+            </div>
+            <button class="gallery-btn gallery-btn--next" id="galleryNext" type="button" aria-label="Ảnh tiếp theo">›</button>
+          </div>
+          <p class="gallery-count" id="galleryCount">1 / 1</p>
+          <div class="gallery-dots" id="galleryDots" aria-label="Vị trí ảnh trong album"></div>
+        </section>
+
+        <section class="panel rsvp" id="rsvp">
+          <p class="overline">Xác nhận tham dự</p>
+          <h2 id="rsvpTitle">Kính mong Thầy Cô phản hồi</h2>
+          <p id="rsvpIntro">Thầy Cô vui lòng xác nhận tham dự để gia đình chuẩn bị đón tiếp chu đáo.</p>
+          <button class="button" id="showRsvpForm" type="button" aria-expanded="false" aria-controls="rsvpForm">Xác nhận tham dự</button>
+          <form class="rsvp-form" id="rsvpForm" hidden>
+            <label>
+              <span>Tên Thầy/Cô</span>
+              <input id="rsvpName" name="name" type="text" autocomplete="name" readonly required />
+            </label>
+            <p class="rsvp-private-note" id="rsvpPrivateNote"></p>
+            <label>
+              <span>Nhóm khách</span>
+              <select id="rsvpGroup" name="group" required>
+                <option value="nha-gai">Nhà gái</option>
+                <option value="nha-trai">Nhà trai</option>
+                <option value="both">Hai gia đình</option>
+              </select>
+            </label>
+            <label>
+              <span>Tham dự</span>
+              <select id="rsvpAttend" name="attend" required>
+                <option value="yes">Có tham dự</option>
+                <option value="no">Rất tiếc không tham dự</option>
+              </select>
+            </label>
+            <label>
+              <span>Số người</span>
+              <input id="rsvpGuests" name="guests" type="number" min="1" max="10" value="1" required />
+            </label>
+            <label>
+              <span>Số điện thoại</span>
+              <input id="rsvpPhone" name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <button class="button" type="submit">Gửi xác nhận</button>
+            <p class="form-status" id="rsvpStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel wishes" id="wishes">
+          <p class="overline">Lời chúc</p>
+          <h2>Gửi lời chúc</h2>
+          <p id="wishIntro">Những lời chúc của Thầy Cô sẽ là kỷ niệm quý báu dành cho gia đình và tụi em.</p>
+          <form class="wish-form" id="wishForm">
+            <label>
+              <span>Tên Thầy/Cô</span>
+              <input id="wishName" type="text" required autocomplete="name" />
+            </label>
+            <label>
+              <span>Lời chúc</span>
+              <textarea id="wishMessage" rows="4" required></textarea>
+            </label>
+            <button class="button" type="submit">Gửi lời chúc</button>
+            <p class="form-status" id="wishStatus" role="status"></p>
+          </form>
+        </section>
+
+        <section class="panel gift" id="gift">
+          <p class="overline">Lời chúc phúc</p>
+          <h2>Tri ân</h2>
+          <p id="giftIntro">Sự hiện diện và lời chúc của Thầy Cô là món quà quý nhất đối với gia đình và tụi em.</p>
+          <div class="gift-list" id="giftList"></div>
+        </section>
+
+        <section class="panel guestbook-wall" id="guestbookWall">
+          <p class="overline">Sổ lưu bút</p>
+          <h2>Lời chúc từ mọi người</h2>
+          <div class="wish-list" id="wishList" aria-live="polite"></div>
+        </section>
+
+        <section class="panel closing">
+          <p id="closingIntro">Gia đình tụi em rất hân hạnh được đón tiếp Thầy Cô trong ngày vui của Hà và An.</p>
+          <h2>Hà & An</h2>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Điều hướng thiệp">
+        <a href="#home"><span>⌂</span>Nhà</a>
+        <a href="#couple"><span>♡</span>Đôi</a>
+        <a href="#date"><span>□</span>Ngày</a>
+        <a href="#gallery"><span>▣</span>Ảnh</a>
+        <a href="#rsvp"><span>✓</span>RSVP</a>
+        <a href="#wishes"><span>✎</span>Chúc</a>
+      </nav>
+    </div>
+  </div>
+
+  <button class="music-button" id="musicButton" type="button" aria-label="Bật hoặc tắt nhạc" aria-pressed="false" hidden>♪</button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="music/clavier-music-pachelbelx27s-canon-canon-in-d-307319.mp3" type="audio/mpeg" />
+  </audio>
+  <script src="script-thay-co.js"></script>
+</body>
+</html>
