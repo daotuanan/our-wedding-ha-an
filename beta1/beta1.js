@@ -37,14 +37,14 @@ const wedding = {
     ],
     "nha-trai": [
       { title: "Lễ Tân Hôn", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "09:00", place: "Tư gia chú rể", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" },
-      { title: "Tiệc Cưới", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "17:30", place: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" }
+      { title: "Tiệc Tân Hôn", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "17:30", place: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" }
     ]
   },
   events: [
     { group: "nha-gai", time: "08:00-09:00, Thứ Hai 26/10/2026", title: "Lễ Đính Hôn & Vu Quy", description: "Nghi lễ gia tiên tại tư gia cô dâu." },
     { group: "nha-gai", time: "11:00-12:00, Thứ Hai 26/10/2026", title: "Tiệc Vu Quy", description: "Tiệc mừng tại tư gia cô dâu." },
     { group: "nha-trai", time: "09:00, Thứ Sáu 30/10/2026", title: "Lễ Tân Hôn", description: "Nghi lễ gia tiên tại tư gia chú rể." },
-    { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Cưới", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
+    { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Tân Hôn", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
   ],
   locations: [
     { group: "nha-gai", title: "Tư gia cô dâu", address: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "../assets/qr_nha_gai.png" },
@@ -77,7 +77,7 @@ const calendarEvents = {
     details: "Lễ Đính Hôn & Vu Quy của Hà và An."
   },
   "nha-trai": {
-    text: "Tiệc cưới Hà & An",
+    text: "Tiệc Tân Hôn Hà & An",
     start: "20261030T123000Z",
     end: "20261030T143000Z",
     location: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, TP. Hồ Chí Minh",
