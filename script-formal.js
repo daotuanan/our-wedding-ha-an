@@ -44,8 +44,8 @@ const wedding = {
     ]
   },
   events: [
-    { group: "nha-gai", time: "08:00-09:00, Thứ Hai 26/10/2026", title: "Lễ Đính Hôn & Vu Quy", description: "Nghi lễ gia tiên tại tư gia cô dâu." },
-    { group: "nha-gai", time: "11:00-12:00, Thứ Hai 26/10/2026", title: "Tiệc Vu Quy", description: "Tiệc mừng tại tư gia cô dâu." },
+    { group: "nha-gai", time: "08:00, Thứ Hai 26/10/2026", title: "Lễ Đính Hôn & Vu Quy", description: "Nghi lễ gia tiên tại tư gia cô dâu." },
+    { group: "nha-gai", time: "11:00, Thứ Hai 26/10/2026", title: "Tiệc Vu Quy", description: "Tiệc mừng tại tư gia cô dâu." },
     { group: "nha-trai", time: "09:00, Thứ Sáu 30/10/2026", title: "Lễ Tân Hôn", description: "Nghi lễ gia tiên tại tư gia chú rể." },
     { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Tân Hôn", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
   ],
