@@ -88,7 +88,9 @@ const calendarEvents = {
 const params = new URLSearchParams(window.location.search);
 const guestName = params.get("to")?.trim() || "bạn thương mến";
 const guestId = params.get("id")?.trim() || "";
-let currentGroup = wedding.groups[params.get("type")] ? params.get("type") : "both";
+const requestedGroup = params.get("type");
+const lockedGroup = wedding.groups[requestedGroup] ? requestedGroup : "";
+let currentGroup = lockedGroup || "both";
 let countdownTimer;
 let galleryIndex = 0;
 let sceneIndex = 0;
@@ -291,10 +293,15 @@ function renderGifts() {
 }
 
 function setActiveGroup() {
+  const tabs = document.querySelector(".tabs");
+  if (tabs && lockedGroup) tabs.hidden = true;
+
   document.querySelectorAll("[data-group]").forEach((button) => {
     const active = button.dataset.group === currentGroup;
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-selected", String(active));
+    button.hidden = Boolean(lockedGroup && !active);
+    button.disabled = Boolean(lockedGroup);
   });
 }
 
@@ -804,6 +811,8 @@ function bindEvents() {
   });
 
   document.querySelectorAll("[data-group]").forEach((button) => {
+    if (lockedGroup) return;
+
     button.addEventListener("click", () => {
       currentGroup = button.dataset.group;
       elements.invite.classList.add("is-updating");
