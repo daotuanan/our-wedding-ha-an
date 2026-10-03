@@ -6,25 +6,25 @@ const wedding = {
       label: "Bride's family",
       greeting: "Bride's friends",
       subtitle: "With love, we invite you to our wedding celebration.",
-      copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
+      copy: "You are one of the special people we would love to have by our side. We hope you can join us and share this happy moment.",
       coverDate: "26.10.2026",
-      countdownTitle: "Bride's ceremony in Gia Lai",
+      countdownTitle: "Wedding Ceremony at the Bride's Home",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
     "nha-trai": {
       label: "Groom's family",
       greeting: "Groom's friends",
       subtitle: "With love, we invite you to our wedding celebration.",
-      copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
+      copy: "You are one of the special people we would love to have by our side. We hope you can join us and share this happy moment.",
       coverDate: "30.10.2026",
-      countdownTitle: "Groom's ceremony in Ho Chi Minh City",
+      countdownTitle: "Wedding Ceremony at the Groom's Home",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
     both: {
       label: "Both families",
       greeting: "Dear friend",
       subtitle: "With love, we invite you to our wedding celebration.",
-      copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
+      copy: "You are one of the special people we would love to have by our side. We hope you can join us and share this happy moment.",
       coverDate: "26.10.2026 | 30.10.2026",
       countdownTitle: "The first celebration in Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
@@ -32,19 +32,19 @@ const wedding = {
   },
   dates: {
     "nha-gai": [
-      { title: "Bride's Ceremony", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai" },
-      { title: "Bride's Reception", day: "26", month: "10", year: "2026", weekday: "Monday", time: "11:00", place: "Bride's family home", city: "Gia Lai" }
+      { title: "Wedding Ceremony at the Bride's Home", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai" },
+      { title: "Wedding Reception", day: "26", month: "10", year: "2026", weekday: "Monday", time: "11:00", place: "Bride's family home", city: "Gia Lai" }
     ],
     "nha-trai": [
-      { title: "Groom's Ceremony", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City" },
-      { title: "Groom's Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall - Nam Bo Wedding Restaurant", city: "Ho Chi Minh City" }
+      { title: "Wedding Ceremony at the Groom's Home", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City" },
+      { title: "Wedding Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall - Nam Bo Wedding Restaurant", city: "Ho Chi Minh City" }
     ]
   },
   events: [
-    { group: "nha-gai", time: "08:00, Monday 26/10/2026", title: "Engagement & Bride's Ceremony", description: "Family ceremony at the bride's home." },
-    { group: "nha-gai", time: "11:00, Monday 26/10/2026", title: "Bride's Reception", description: "Reception at the bride's home." },
-    { group: "nha-trai", time: "09:00, Friday 30/10/2026", title: "Groom's Ceremony", description: "Family ceremony at the groom's home." },
-    { group: "nha-trai", time: "17:30 guest welcome, 19:00 reception, Friday 30/10/2026", title: "Groom's Reception", description: "Tinh Yeu Hall - Nam Bo Wedding Restaurant." }
+    { group: "nha-gai", time: "08:00, Monday 26/10/2026", title: "Engagement & Wedding Ceremony at the Bride's Home", description: "Family ceremony at the bride's home." },
+    { group: "nha-gai", time: "11:00, Monday 26/10/2026", title: "Wedding Reception", description: "Reception at the bride's home." },
+    { group: "nha-trai", time: "09:00, Friday 30/10/2026", title: "Wedding Ceremony at the Groom's Home", description: "Family ceremony at the groom's home." },
+    { group: "nha-trai", time: "17:30 guest welcome, 19:00 reception, Friday 30/10/2026", title: "Wedding Reception", description: "Tinh Yeu Hall - Nam Bo Wedding Restaurant." }
   ],
   locations: [
     { group: "nha-gai", title: "Bride's family home", address: "Tan Lap Hamlet, K'Dang Commune, Gia Lai Province", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "assets/qr_nha_gai.png" },
@@ -70,14 +70,14 @@ const galleryImages = [
 
 const calendarEvents = {
   "nha-gai": {
-    text: "Ha & An Bride's Ceremony",
+    text: "Ha & An Wedding Ceremony",
     start: "20261026T010000Z",
     end: "20261026T020000Z",
     location: "Tan Lap Hamlet, K'Dang Commune, Gia Lai Province",
     details: "Ha and An's engagement and bride's ceremony."
   },
   "nha-trai": {
-    text: "Ha & An Groom's Reception",
+    text: "Ha & An Wedding Reception",
     start: "20261030T123000Z",
     end: "20261030T143000Z",
     location: "Tinh Yeu Hall - Nam Bo Wedding Restaurant, 615A Au Co, Ho Chi Minh City",
