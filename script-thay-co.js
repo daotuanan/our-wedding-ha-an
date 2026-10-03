@@ -215,11 +215,14 @@ function updateText() {
   elements.rsvpTitle.textContent = `Kính mong ${guestName} phản hồi`;
   elements.rsvpIntro.textContent = `${guestName} vui lòng xác nhận tham dự để gia đình chuẩn bị đón tiếp chu đáo.`;
   elements.rsvpName.value = customGuestName;
-  elements.rsvpName.readOnly = false;
+  elements.rsvpName.readOnly = Boolean(customGuestName);
   elements.rsvpName.placeholder = "Nhập tên Thầy/Cô";
-  elements.rsvpPrivateNote.textContent = `${guestName} vui lòng điền tên để gia đình tiện ghi nhận và chuẩn bị đón tiếp.`;
+  elements.rsvpPrivateNote.textContent = customGuestName
+    ? `Tên ${guestName} đã được điền sẵn theo thiệp mời.`
+    : "Thầy Cô vui lòng điền tên để gia đình tiện ghi nhận và chuẩn bị đón tiếp.";
   elements.rsvpGroup.value = currentGroup;
   elements.wishName.value = customGuestName;
+  elements.wishName.readOnly = Boolean(customGuestName);
   elements.wishName.placeholder = "Nhập tên Thầy/Cô";
   elements.wishIntro.textContent = `Những lời chúc của ${guestName} sẽ là kỷ niệm quý báu dành cho gia đình và ${pronounLower}.`;
   elements.giftIntro.textContent = `Sự hiện diện và lời chúc của ${guestName} là món quà quý nhất đối với gia đình và ${pronounLower}.`;
