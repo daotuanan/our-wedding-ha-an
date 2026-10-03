@@ -7,7 +7,7 @@ const wedding = {
       greeting: "Bride's friends",
       subtitle: "With love, we invite you to our wedding celebration.",
       copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
-      coverDate: "26.10.2026 • Lunar 17.09",
+      coverDate: "26.10.2026",
       countdownTitle: "Bride's ceremony in Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
@@ -16,7 +16,7 @@ const wedding = {
       greeting: "Groom's friends",
       subtitle: "With love, we invite you to our wedding celebration.",
       copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
-      coverDate: "30.10.2026 • Lunar 21.09",
+      coverDate: "30.10.2026",
       countdownTitle: "Groom's ceremony in Ho Chi Minh City",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
@@ -25,19 +25,19 @@ const wedding = {
       greeting: "Dear friend",
       subtitle: "With love, we invite you to our wedding celebration.",
       copy: "You are one of the special people we would love to have by our side. We hope you and your family can join us and share this happy moment.",
-      coverDate: "26.10.2026 • Lunar 17.09 | 30.10.2026 • Lunar 21.09",
+      coverDate: "26.10.2026 | 30.10.2026",
       countdownTitle: "The first celebration in Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     }
   },
   dates: {
     "nha-gai": [
-      { title: "Bride's Ceremony", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai", lunar: "17.09, Year of the Fire Horse" },
-      { title: "Bride's Reception", day: "26", month: "10", year: "2026", weekday: "Monday", time: "11:00", place: "Bride's family home", city: "Gia Lai", lunar: "17.09, Year of the Fire Horse" }
+      { title: "Bride's Ceremony", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai" },
+      { title: "Bride's Reception", day: "26", month: "10", year: "2026", weekday: "Monday", time: "11:00", place: "Bride's family home", city: "Gia Lai" }
     ],
     "nha-trai": [
-      { title: "Groom's Ceremony", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City", lunar: "21.09, Year of the Fire Horse" },
-      { title: "Groom's Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall - Nam Bo Wedding Restaurant", city: "Ho Chi Minh City", lunar: "21.09, Year of the Fire Horse" }
+      { title: "Groom's Ceremony", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City" },
+      { title: "Groom's Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall - Nam Bo Wedding Restaurant", city: "Ho Chi Minh City" }
     ]
   },
   events: [
@@ -224,7 +224,6 @@ function renderDates() {
       <strong>${date.day}</strong>
       <b>October ${date.year}</b>
       <small>${date.weekday} • ${date.time} • ${date.place}</small>
-      <small>Lunar date: ${date.lunar}</small>
     </article>
   `).join("") + renderCommonCity(dates, "date-card date-card--common");
 }
