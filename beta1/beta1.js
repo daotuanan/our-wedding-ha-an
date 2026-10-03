@@ -86,7 +86,8 @@ const calendarEvents = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const guestName = params.get("to")?.trim() || "bạn thương mến";
+const customGuestName = params.get("to")?.trim() || "";
+const guestName = customGuestName || "bạn thương mến";
 const guestId = params.get("id")?.trim() || "";
 const requestedGroup = params.get("type");
 const lockedGroup = wedding.groups[requestedGroup] ? requestedGroup : "";
@@ -197,9 +198,13 @@ function updateText() {
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
   elements.rsvpName.value = guestName;
-  elements.rsvpPrivateNote.textContent = `Link này được gửi riêng cho ${guestName}. Nếu bạn không phải ${guestName}, vui lòng nhắn Hà & An để nhận thiệp riêng nhé.`;
+  elements.rsvpName.readOnly = Boolean(customGuestName);
+  elements.rsvpPrivateNote.textContent = customGuestName
+    ? `Link này được gửi riêng cho ${guestName}. Nếu bạn không phải ${guestName}, vui lòng nhắn Hà & An để nhận thiệp riêng nhé.`
+    : "Bạn vui lòng điền tên để tụi mình ghi nhận xác nhận tham dự nhé.";
   elements.rsvpGroup.value = currentGroup;
   elements.wishName.value = guestName;
+  elements.wishName.readOnly = Boolean(customGuestName);
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
   document.title = `Beta1 - Thiệp cưới Hà & An - ${guestName}`;

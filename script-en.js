@@ -86,7 +86,8 @@ const calendarEvents = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const guestName = params.get("to")?.trim() || "dear friend";
+const customGuestName = params.get("to")?.trim() || "";
+const guestName = customGuestName || "dear friend";
 const guestId = params.get("id")?.trim() || "";
 const requestedGroup = params.get("type");
 const lockedGroup = wedding.groups[requestedGroup] ? requestedGroup : "";
@@ -197,9 +198,13 @@ function updateText() {
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Hope to see you, ${guestName}`;
   elements.rsvpName.value = guestName;
-  elements.rsvpPrivateNote.textContent = `This link was made especially for ${guestName}. If you are not ${guestName}, please message Ha & An for your own invitation.`;
+  elements.rsvpName.readOnly = Boolean(customGuestName);
+  elements.rsvpPrivateNote.textContent = customGuestName
+    ? `This link was made especially for ${guestName}. If you are not ${guestName}, please message Ha & An for your own invitation.`
+    : "Please enter your name so we can confirm your RSVP.";
   elements.rsvpGroup.value = currentGroup;
   elements.wishName.value = guestName;
+  elements.wishName.readOnly = Boolean(customGuestName);
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
   document.title = `Ha & An Wedding Invitation - ${guestName}`;
@@ -257,6 +262,8 @@ function renderLocations() {
 }
 
 function renderGifts() {
+  if (!elements.giftList) return;
+
   elements.giftList.innerHTML = wedding.gifts.filter(matchesGroup).map((gift) => `
     <article class="gift-card">
       <small>${gift.group === "nha-gai" ? "Bride's family" : "Groom's family"}</small>
@@ -880,8 +887,8 @@ function bindEvents() {
       }).catch(() => {});
     }
     elements.rsvpStatus.textContent = response.attend === "yes"
-      ? `RSVP received: ${response.name} will attend (${response.guests} guest${response.guests > 1 ? "s" : ""}).`
-      : `RSVP response received from ${response.name}.`;
+      ? `Thank you, ${response.name}. Your RSVP is confirmed (${response.guests} guest${response.guests > 1 ? "s" : ""}).`
+      : `Thank you, ${response.name}. Your RSVP response is confirmed.`;
   });
 }
 
