@@ -140,6 +140,7 @@ const elements = {
   showRsvpForm: document.getElementById("showRsvpForm"),
   rsvpForm: document.getElementById("rsvpForm"),
   rsvpName: document.getElementById("rsvpName"),
+  rsvpIntro: document.getElementById("rsvpIntro"),
   rsvpPrivateNote: document.getElementById("rsvpPrivateNote"),
   rsvpTitle: document.getElementById("rsvpTitle"),
   rsvpGroup: document.getElementById("rsvpGroup"),
@@ -151,7 +152,10 @@ const elements = {
   wishName: document.getElementById("wishName"),
   wishMessage: document.getElementById("wishMessage"),
   wishStatus: document.getElementById("wishStatus"),
+  wishIntro: document.getElementById("wishIntro"),
   wishList: document.getElementById("wishList"),
+  giftIntro: document.getElementById("giftIntro"),
+  closingIntro: document.getElementById("closingIntro"),
   saveCalendar: document.getElementById("saveCalendar"),
   musicButton: document.getElementById("musicButton"),
   bgMusic: document.getElementById("bgMusic")
@@ -187,6 +191,8 @@ function makeCalendarUrl(event) {
 
 function updateText() {
   const group = wedding.groups[currentGroup];
+  const guestLabel = customGuestName || "bạn";
+  const guestWithFamily = customGuestName ? `${guestName} và gia đình` : "bạn và gia đình";
   elements.welcomeGuest.textContent = guestName;
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
@@ -194,9 +200,14 @@ function updateText() {
   updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương!`;
-  elements.invitationCopy.textContent = group.copy;
+  elements.invitationCopy.textContent = customGuestName
+    ? `${guestName} là một trong những người đặc biệt với bọn mình. Mong ${guestWithFamily} ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.`
+    : group.copy;
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
+  elements.rsvpIntro.textContent = customGuestName
+    ? `${guestName} xác nhận tham dự để tụi mình chuẩn bị đón ${guestLabel} chu đáo nhé!`
+    : "Xác nhận tham dự để tụi mình chuẩn bị đón bạn chu đáo nhé!";
   elements.rsvpName.value = guestName;
   elements.rsvpName.readOnly = Boolean(customGuestName);
   elements.rsvpPrivateNote.textContent = customGuestName
@@ -205,6 +216,15 @@ function updateText() {
   elements.rsvpGroup.value = currentGroup;
   elements.wishName.value = guestName;
   elements.wishName.readOnly = Boolean(customGuestName);
+  elements.wishIntro.textContent = customGuestName
+    ? `Lời chúc của ${guestName} sẽ là một kỷ niệm thật đẹp dành cho tụi mình.`
+    : "Lời chúc của bạn sẽ là một kỷ niệm thật đẹp dành cho tụi mình.";
+  elements.giftIntro.textContent = customGuestName
+    ? `Có ${guestName} chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.`
+    : "Có bạn chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.";
+  elements.closingIntro.textContent = customGuestName
+    ? `Vì ngày đặc biệt sẽ càng ý nghĩa hơn khi có những người đặc biệt ở bên. Mong ${guestWithFamily} đến chung vui cùng tụi mình nhé!`
+    : "Vì ngày đặc biệt sẽ càng ý nghĩa hơn khi có những người đặc biệt ở bên. Mong bạn và gia đình đến chung vui cùng tụi mình nhé!";
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
   document.title = `Thiệp cưới Hà & An - ${guestName}`;
