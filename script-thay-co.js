@@ -89,7 +89,8 @@ const calendarEvents = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const guestName = params.get("to")?.trim() || "Thầy Cô";
+const customGuestName = params.get("to")?.trim() || "";
+const guestName = customGuestName || "Thầy Cô";
 const pronoun = params.get("xung")?.trim() || params.get("from")?.trim() || "Tụi em";
 const pronounLower = pronoun.charAt(0).toLocaleLowerCase("vi-VN") + pronoun.slice(1);
 const guestId = params.get("id")?.trim() || "";
@@ -213,12 +214,12 @@ function updateText() {
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Kính mong ${guestName} phản hồi`;
   elements.rsvpIntro.textContent = `${guestName} vui lòng xác nhận tham dự để gia đình chuẩn bị đón tiếp chu đáo.`;
-  elements.rsvpName.value = "";
+  elements.rsvpName.value = customGuestName;
   elements.rsvpName.readOnly = false;
   elements.rsvpName.placeholder = "Nhập tên Thầy/Cô";
   elements.rsvpPrivateNote.textContent = `${guestName} vui lòng điền tên để gia đình tiện ghi nhận và chuẩn bị đón tiếp.`;
   elements.rsvpGroup.value = currentGroup;
-  elements.wishName.value = "";
+  elements.wishName.value = customGuestName;
   elements.wishName.placeholder = "Nhập tên Thầy/Cô";
   elements.wishIntro.textContent = `Những lời chúc của ${guestName} sẽ là kỷ niệm quý báu dành cho gia đình và ${pronounLower}.`;
   elements.giftIntro.textContent = `Sự hiện diện và lời chúc của ${guestName} là món quà quý nhất đối với gia đình và ${pronounLower}.`;
