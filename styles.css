@@ -869,6 +869,28 @@ img { max-width: 100%; display: block; }
 
 .bottom-nav a.is-active span { transform: scale(1.16); }
 
+body.lang-en #countdownTitle {
+  font-size: clamp(28px, 8.8vw, 42px);
+  line-height: 1.1;
+}
+
+body.lang-en .home-date-card strong,
+body.lang-en .event h3 {
+  font-size: clamp(1.12rem, 5.4vw, 1.5rem);
+  line-height: 1.18;
+}
+
+body.lang-en .date-card span {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+body.lang-en .location-card h3,
+body.lang-en .gift-card h3 {
+  line-height: 1.18;
+}
+
 .music-button {
   position: fixed;
   right: 18px;

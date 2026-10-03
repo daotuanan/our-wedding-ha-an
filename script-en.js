@@ -8,7 +8,7 @@ const wedding = {
       subtitle: "With love, we invite you to our wedding celebration.",
       copy: "You are one of the special people we would love to have by our side. We hope you can join us and share this happy moment.",
       coverDate: "26.10.2026",
-      countdownTitle: "Wedding Ceremony at the Bride's Home",
+      countdownTitle: "Bride's Home Ceremony",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
     "nha-trai": {
@@ -17,7 +17,7 @@ const wedding = {
       subtitle: "With love, we invite you to our wedding celebration.",
       copy: "You are one of the special people we would love to have by our side. We hope you can join us and share this happy moment.",
       coverDate: "30.10.2026",
-      countdownTitle: "Wedding Ceremony at the Groom's Home",
+      countdownTitle: "Groom's Home Ceremony",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
     both: {
@@ -32,19 +32,19 @@ const wedding = {
   },
   dates: {
     "nha-gai": [
-      { title: "Wedding Ceremony at the Bride's Home", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai" },
+      { title: "Bride's Home Ceremony", day: "26", month: "10", year: "2026", weekday: "Monday", time: "08:00", place: "Bride's family home", city: "Gia Lai" },
       { title: "Wedding Reception", day: "26", month: "10", year: "2026", weekday: "Monday", time: "11:00", place: "Bride's family home", city: "Gia Lai" }
     ],
     "nha-trai": [
-      { title: "Wedding Ceremony at the Groom's Home", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City" },
-      { title: "Wedding Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall - Nam Bo Wedding Restaurant", city: "Ho Chi Minh City" }
+      { title: "Groom's Home Ceremony", day: "30", month: "10", year: "2026", weekday: "Friday", time: "09:00", place: "Groom's family home", city: "Ho Chi Minh City" },
+      { title: "Wedding Reception", day: "30", month: "10", year: "2026", weekday: "Friday", time: "17:30", place: "Tinh Yeu Hall, Nam Bo Restaurant", city: "Ho Chi Minh City" }
     ]
   },
   events: [
-    { group: "nha-gai", time: "08:00, Monday 26/10/2026", title: "Engagement & Wedding Ceremony at the Bride's Home", description: "Family ceremony at the bride's home." },
+    { group: "nha-gai", time: "08:00, Monday 26/10/2026", title: "Engagement Ceremony", description: "Family ceremony at the bride's home." },
     { group: "nha-gai", time: "11:00, Monday 26/10/2026", title: "Wedding Reception", description: "Reception at the bride's home." },
-    { group: "nha-trai", time: "09:00, Friday 30/10/2026", title: "Wedding Ceremony at the Groom's Home", description: "Family ceremony at the groom's home." },
-    { group: "nha-trai", time: "17:30 guest welcome, 19:00 reception, Friday 30/10/2026", title: "Wedding Reception", description: "Tinh Yeu Hall - Nam Bo Wedding Restaurant." }
+    { group: "nha-trai", time: "09:00, Friday 30/10/2026", title: "Groom's Home Ceremony", description: "Family ceremony at the groom's home." },
+    { group: "nha-trai", time: "17:30 guest welcome, 19:00 reception, Friday 30/10/2026", title: "Wedding Reception", description: "Tinh Yeu Hall, Nam Bo Restaurant." }
   ],
   locations: [
     { group: "nha-gai", title: "Bride's family home", address: "Tan Lap Hamlet, K'Dang Commune, Gia Lai Province", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "assets/qr_nha_gai.png" },
@@ -80,7 +80,7 @@ const calendarEvents = {
     text: "Ha & An Wedding Reception",
     start: "20261030T123000Z",
     end: "20261030T143000Z",
-    location: "Tinh Yeu Hall - Nam Bo Wedding Restaurant, 615A Au Co, Ho Chi Minh City",
+    location: "Tinh Yeu Hall, Nam Bo Restaurant, 615A Au Co, Ho Chi Minh City",
     details: "Guest welcome at 17:30, reception starts at 19:00."
   }
 };
@@ -265,7 +265,7 @@ function renderGifts() {
         <span>囍</span>
         <img data-src="${gift.qr}" alt="Account QR for ${gift.title}" hidden />
       </button>
-      <small class="gift-card__hint" data-gift-hint>Tap the double-happiness symbol to show the QR code</small>
+      <small class="gift-card__hint" data-gift-hint>Tap the symbol to show QR</small>
       <div class="gift-card__details" data-gift-details hidden>
         <dl>
           <div><dt>Bank</dt><dd>${gift.bank}</dd></div>
@@ -291,7 +291,7 @@ function renderGifts() {
 
       const card = button.closest(".gift-card");
       card.querySelector("[data-gift-details]").hidden = !willShow;
-      card.querySelector("[data-gift-hint]").textContent = willShow ? "Tap again to hide the QR code" : "Tap the double-happiness symbol to show the QR code";
+      card.querySelector("[data-gift-hint]").textContent = willShow ? "Tap again to hide the QR code" : "Tap the symbol to show QR";
     });
   });
 
