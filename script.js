@@ -156,8 +156,20 @@ const elements = {
   bgMusic: document.getElementById("bgMusic")
 };
 
+function getGroupRank(group) {
+  if (currentGroup === "nha-trai") return group === "nha-trai" ? 0 : 1;
+  if (currentGroup === "nha-gai") return group === "nha-gai" ? 0 : 1;
+  return group === "nha-gai" ? 0 : 1;
+}
+
 function matchesGroup(item) {
   return currentGroup === "both" || item.group === currentGroup;
+}
+
+function updateParentsOrder() {
+  document.querySelectorAll("[data-parent-group]").forEach((parent) => {
+    parent.style.order = String(getGroupRank(parent.dataset.parentGroup));
+  });
 }
 
 function makeCalendarUrl(event) {
@@ -178,6 +190,7 @@ function updateText() {
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
   renderHomeDates();
+  updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương!`;
   elements.invitationCopy.textContent = group.copy;
