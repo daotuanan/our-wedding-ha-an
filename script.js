@@ -599,13 +599,19 @@ function loadGuestbookMessagesFromSheet() {
 }
 
 function toggleForm(button, form) {
+  const panel = form.closest(".panel");
+  const panelTop = panel?.getBoundingClientRect().top;
   const willOpen = form.hidden;
   form.hidden = !willOpen;
   button.setAttribute("aria-expanded", String(willOpen));
   if (willOpen) {
-    form.querySelector("input, select, textarea")?.focus();
     observeRevealTargets();
     scheduleRevealCheck();
+  }
+  if (panel && typeof panelTop === "number") {
+    requestAnimationFrame(() => {
+      window.scrollBy(0, panel.getBoundingClientRect().top - panelTop);
+    });
   }
 }
 
