@@ -54,10 +54,7 @@ const wedding = {
     { group: "nha-trai", title: "Tư gia chú rể", address: "13/5 Nguyễn Văn Yến, phường Phú Thạnh, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9", qr: "assets/qr_nha_trai_le.png" },
     { group: "nha-trai", title: "Sảnh Tình Yêu", address: "Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, phường Tân Phú, TP. Hồ Chí Minh", map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7", qr: "assets/qr_nha_trai.png" }
   ],
-  gifts: [
-    { group: "nha-gai", title: "Lời chúc phúc nhà gái", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" },
-    { group: "nha-trai", title: "Lời chúc phúc nhà trai", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" }
-  ]
+  gifts: []
 };
 
 wedding.dates.both = [...wedding.dates["nha-gai"], ...wedding.dates["nha-trai"]];
@@ -201,6 +198,7 @@ function personalize(text) {
 }
 
 function updateText() {
+  document.getElementById("gift")?.remove();
   const group = wedding.groups[currentGroup];
   elements.welcomeGuest.textContent = guestName;
   elements.welcomeDate.textContent = group.coverDate;
@@ -828,7 +826,6 @@ function refreshGroup() {
   renderDates();
   renderTimeline();
   renderLocations();
-  renderGifts();
   setActiveGroup();
   updateCountdown();
 }
