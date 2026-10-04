@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="image" href="../assets/optimized/background.webp" fetchpriority="high" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -19,7 +19,7 @@
       <p class="overline">Song hỷ</p>
       <img src="../assets/optimized/background.webp" alt="Hà và An" class="welcome__photo" width="150" height="150" decoding="async" fetchpriority="high" />
       <h1>Hà <span>&</span> An</h1>
-      <p class="welcome__date" id="welcomeDate">26.10.2026 • 30.10.2026</p>
+      <p class="welcome__date">26.10.2026 • 30.10.2026</p>
       <div class="guest-box">
         <p>Gửi <strong id="welcomeGuest">bạn thương mến</strong> lời mời thân thương</p>
       </div>
@@ -57,13 +57,13 @@
           <p id="invitationGreeting">Gửi bạn tấm thiệp cưới đong đầy yêu&nbsp;thương!</p>
           <p id="invitationCopy">Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.</p>
           <div class="parents">
-            <article data-parent-group="nha-gai">
+            <article>
               <span>Nhà gái</span>
               <strong>Ông Đào Thanh Vui</strong>
               <strong>Bà Võ Thị Hoa</strong>
               <small>Gia Lai</small>
             </article>
-            <article data-parent-group="nha-trai">
+            <article>
               <span>Nhà trai</span>
               <strong>Ông Đào Tuấn Anh</strong>
               <strong>Bà Đồng Thị Thanh Thuý</strong>
@@ -132,7 +132,7 @@
         <section class="panel rsvp" id="rsvp">
           <p class="overline">Xác nhận tham dự</p>
           <h2 id="rsvpTitle">Hẹn gặp bạn thương mến</h2>
-          <p id="rsvpIntro">Xác nhận tham dự để tụi mình chuẩn bị đón bạn chu đáo nhé!</p>
+          <p>Xác nhận tham dự để tụi mình chuẩn bị đón bạn chu đáo nhé!</p>
           <button class="button" id="showRsvpForm" type="button" aria-expanded="false" aria-controls="rsvpForm">Xác nhận tham dự</button>
           <form class="rsvp-form" id="rsvpForm" hidden>
             <label>
@@ -171,7 +171,7 @@
         <section class="panel wishes" id="wishes">
           <p class="overline">Lời chúc</p>
           <h2>Gửi lời chúc</h2>
-          <p id="wishIntro">Lời chúc của bạn sẽ là một kỷ niệm thật đẹp dành cho tụi mình.</p>
+          <p>Lời chúc của bạn sẽ là một kỷ niệm thật đẹp dành cho tụi mình.</p>
           <form class="wish-form" id="wishForm">
             <label>
               <span>Tên của bạn</span>
@@ -189,7 +189,7 @@
         <section class="panel gift" id="gift">
           <p class="overline">Hộp quà mừng</p>
           <h2>Gửi chút thương mến</h2>
-          <p id="giftIntro">Có bạn chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.</p>
+          <p>Có bạn chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.</p>
           <div class="gift-list" id="giftList"></div>
         </section>
 
@@ -197,10 +197,11 @@
           <p class="overline">Sổ lưu bút</p>
           <h2>Lời chúc từ mọi người</h2>
           <div class="wish-list" id="wishList" aria-live="polite"></div>
+          <nav class="wish-pagination" id="wishPagination" aria-label="Phân trang lời chúc" hidden></nav>
         </section>
 
         <section class="panel closing">
-          <p id="closingIntro">Vì ngày đặc biệt sẽ càng ý nghĩa hơn khi có những người đặc biệt ở bên. Mong bạn và gia đình đến chung vui cùng tụi mình nhé!</p>
+          <p>Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.</p>
           <h2>Hà & An</h2>
         </section>
       </main>

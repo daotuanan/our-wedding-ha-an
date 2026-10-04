@@ -108,6 +108,8 @@ let galleryHasWarmed = false;
 let remoteGuestbookMessages = [];
 let guestbookHasRequested = false;
 let guestbookRequestPending = false;
+let currentWishPage = 1;
+const wishesPerPage = 5;
 const galleryPreloadCache = new Map();
 const galleryAutoplayMs = 5600;
 
@@ -152,6 +154,7 @@ const elements = {
   wishMessage: document.getElementById("wishMessage"),
   wishStatus: document.getElementById("wishStatus"),
   wishList: document.getElementById("wishList"),
+  wishPagination: document.getElementById("wishPagination"),
   saveCalendar: document.getElementById("saveCalendar"),
   musicButton: document.getElementById("musicButton"),
   bgMusic: document.getElementById("bgMusic")
@@ -537,16 +540,41 @@ function renderWishes() {
   if (!wishes.length) {
     elements.wishList.innerHTML = "";
     elements.wishList.hidden = true;
+    elements.wishPagination.innerHTML = "";
+    elements.wishPagination.hidden = true;
+    currentWishPage = 1;
     return;
   }
 
+  const totalPages = Math.ceil(wishes.length / wishesPerPage);
+  currentWishPage = Math.min(Math.max(currentWishPage, 1), totalPages);
+  const pageStart = (currentWishPage - 1) * wishesPerPage;
+  const visibleWishes = wishes.slice(pageStart, pageStart + wishesPerPage);
+
   elements.wishList.hidden = false;
-  elements.wishList.innerHTML = wishes.map((wish) => `
+  elements.wishList.innerHTML = visibleWishes.map((wish) => `
     <article class="wish-item">
       <p>${escapeHtml(wish.message)}</p>
       <strong>${escapeHtml(wish.name)}</strong>
     </article>
   `).join("");
+
+  renderWishPagination(totalPages);
+}
+
+function renderWishPagination(totalPages) {
+  if (totalPages <= 1) {
+    elements.wishPagination.innerHTML = "";
+    elements.wishPagination.hidden = true;
+    return;
+  }
+
+  elements.wishPagination.hidden = false;
+  elements.wishPagination.innerHTML = `
+    <button type="button" data-wish-page="prev" ${currentWishPage === 1 ? "disabled" : ""}>Trước</button>
+    <span>Trang ${currentWishPage} / ${totalPages}</span>
+    <button type="button" data-wish-page="next" ${currentWishPage === totalPages ? "disabled" : ""}>Sau</button>
+  `;
 }
 
 function saveWish(name, message) {
@@ -714,7 +742,8 @@ function observeRevealTargets() {
     ".wish-form label",
     ".gift-card",
     ".gift-card__qr",
-    ".wish-item"
+    ".wish-item",
+    ".wish-pagination"
   ].join(","));
 
   targets.forEach((target, index) => {
@@ -856,6 +885,16 @@ function bindEvents() {
     }
     elements.wishMessage.value = "";
     elements.wishStatus.textContent = `Cảm ơn ${name} đã gửi lời chúc.`;
+    currentWishPage = 1;
+    renderWishes();
+    observeRevealTargets();
+    scheduleRevealCheck();
+  });
+
+  elements.wishPagination.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-wish-page]");
+    if (!button) return;
+    currentWishPage += button.dataset.wishPage === "next" ? 1 : -1;
     renderWishes();
     observeRevealTargets();
     scheduleRevealCheck();

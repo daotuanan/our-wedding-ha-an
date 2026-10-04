@@ -7,7 +7,6 @@ const wedding = {
       greeting: "Bạn bè nhà gái",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
-      coverDate: "26.10.2026 • 17.09 ÂL",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
@@ -16,7 +15,6 @@ const wedding = {
       greeting: "Bạn bè nhà trai",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
-      coverDate: "30.10.2026 • 21.09 ÂL",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
@@ -25,7 +23,6 @@ const wedding = {
       greeting: "Bạn thương mến",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
-      coverDate: "26.10.2026 • 17.09 ÂL | 30.10.2026 • 21.09 ÂL",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     }
@@ -37,14 +34,14 @@ const wedding = {
     ],
     "nha-trai": [
       { title: "Lễ Tân Hôn", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "09:00", place: "Tư gia chú rể", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" },
-      { title: "Tiệc Tân Hôn", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "17:30", place: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" }
+      { title: "Tiệc Cưới", day: "30", month: "10", year: "2026", weekday: "Thứ Sáu", time: "17:30", place: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ", city: "TP. Hồ Chí Minh", lunar: "21.09 năm Bính Ngọ" }
     ]
   },
   events: [
-    { group: "nha-gai", time: "08:00, Thứ Hai 26/10/2026", title: "Lễ Đính Hôn & Vu Quy", description: "Nghi lễ gia tiên tại tư gia cô dâu." },
-    { group: "nha-gai", time: "11:00, Thứ Hai 26/10/2026", title: "Tiệc Vu Quy", description: "Tiệc mừng tại tư gia cô dâu." },
+    { group: "nha-gai", time: "08:00-09:00, Thứ Hai 26/10/2026", title: "Lễ Đính Hôn & Vu Quy", description: "Nghi lễ gia tiên tại tư gia cô dâu." },
+    { group: "nha-gai", time: "11:00-12:00, Thứ Hai 26/10/2026", title: "Tiệc Vu Quy", description: "Tiệc mừng tại tư gia cô dâu." },
     { group: "nha-trai", time: "09:00, Thứ Sáu 30/10/2026", title: "Lễ Tân Hôn", description: "Nghi lễ gia tiên tại tư gia chú rể." },
-    { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Tân Hôn", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
+    { group: "nha-trai", time: "17:30 đón khách, 19:00 khai tiệc, Thứ Sáu 30/10/2026", title: "Tiệc Cưới", description: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ." }
   ],
   locations: [
     { group: "nha-gai", title: "Tư gia cô dâu", address: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "assets/qr_nha_gai.png" },
@@ -77,7 +74,7 @@ const calendarEvents = {
     details: "Lễ Đính Hôn & Vu Quy của Hà và An."
   },
   "nha-trai": {
-    text: "Tiệc Tân Hôn Hà & An",
+    text: "Tiệc cưới Hà & An",
     start: "20261030T123000Z",
     end: "20261030T143000Z",
     location: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, TP. Hồ Chí Minh",
@@ -86,12 +83,9 @@ const calendarEvents = {
 };
 
 const params = new URLSearchParams(window.location.search);
-const customGuestName = params.get("to")?.trim() || "";
-const guestName = customGuestName || "bạn thương mến";
+const guestName = params.get("to")?.trim() || "bạn thương mến";
 const guestId = params.get("id")?.trim() || "";
-const requestedGroup = params.get("type");
-const lockedGroup = wedding.groups[requestedGroup] ? requestedGroup : "";
-let currentGroup = lockedGroup || "both";
+let currentGroup = wedding.groups[params.get("type")] ? params.get("type") : "both";
 let countdownTimer;
 let galleryIndex = 0;
 let sceneIndex = 0;
@@ -108,6 +102,8 @@ let galleryHasWarmed = false;
 let remoteGuestbookMessages = [];
 let guestbookHasRequested = false;
 let guestbookRequestPending = false;
+let currentWishPage = 1;
+const wishesPerPage = 5;
 const galleryPreloadCache = new Map();
 const galleryAutoplayMs = 5600;
 
@@ -115,7 +111,6 @@ const elements = {
   welcome: document.getElementById("welcome"),
   openInvite: document.getElementById("openInvite"),
   welcomeGuest: document.getElementById("welcomeGuest"),
-  welcomeDate: document.getElementById("welcomeDate"),
   invite: document.getElementById("invite"),
   homeGreeting: document.getElementById("homeGreeting"),
   homeDates: document.getElementById("homeDates"),
@@ -140,7 +135,6 @@ const elements = {
   showRsvpForm: document.getElementById("showRsvpForm"),
   rsvpForm: document.getElementById("rsvpForm"),
   rsvpName: document.getElementById("rsvpName"),
-  rsvpIntro: document.getElementById("rsvpIntro"),
   rsvpPrivateNote: document.getElementById("rsvpPrivateNote"),
   rsvpTitle: document.getElementById("rsvpTitle"),
   rsvpGroup: document.getElementById("rsvpGroup"),
@@ -152,29 +146,15 @@ const elements = {
   wishName: document.getElementById("wishName"),
   wishMessage: document.getElementById("wishMessage"),
   wishStatus: document.getElementById("wishStatus"),
-  wishIntro: document.getElementById("wishIntro"),
   wishList: document.getElementById("wishList"),
-  giftIntro: document.getElementById("giftIntro"),
-  closingIntro: document.getElementById("closingIntro"),
+  wishPagination: document.getElementById("wishPagination"),
   saveCalendar: document.getElementById("saveCalendar"),
   musicButton: document.getElementById("musicButton"),
   bgMusic: document.getElementById("bgMusic")
 };
 
-function getGroupRank(group) {
-  if (currentGroup === "nha-trai") return group === "nha-trai" ? 0 : 1;
-  if (currentGroup === "nha-gai") return group === "nha-gai" ? 0 : 1;
-  return group === "nha-gai" ? 0 : 1;
-}
-
 function matchesGroup(item) {
   return currentGroup === "both" || item.group === currentGroup;
-}
-
-function updateParentsOrder() {
-  document.querySelectorAll("[data-parent-group]").forEach((parent) => {
-    parent.style.order = String(getGroupRank(parent.dataset.parentGroup));
-  });
 }
 
 function makeCalendarUrl(event) {
@@ -191,40 +171,18 @@ function makeCalendarUrl(event) {
 
 function updateText() {
   const group = wedding.groups[currentGroup];
-  const guestLabel = customGuestName || "bạn";
-  const guestWithFamily = customGuestName ? `${guestName} và gia đình` : "bạn và gia đình";
   elements.welcomeGuest.textContent = guestName;
-  elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
   renderHomeDates();
-  updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương!`;
-  elements.invitationCopy.textContent = customGuestName
-    ? `${guestName} là một trong những người đặc biệt với bọn mình. Mong ${guestWithFamily} ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.`
-    : group.copy;
+  elements.invitationCopy.textContent = group.copy;
   elements.countdownTitle.textContent = group.countdownTitle;
   elements.rsvpTitle.textContent = `Hẹn gặp ${guestName}`;
-  elements.rsvpIntro.textContent = customGuestName
-    ? `${guestName} xác nhận tham dự để tụi mình chuẩn bị đón ${guestLabel} chu đáo nhé!`
-    : "Xác nhận tham dự để tụi mình chuẩn bị đón bạn chu đáo nhé!";
   elements.rsvpName.value = guestName;
-  elements.rsvpName.readOnly = Boolean(customGuestName);
-  elements.rsvpPrivateNote.textContent = customGuestName
-    ? `Link này được gửi riêng cho ${guestName}. Nếu bạn không phải ${guestName}, vui lòng nhắn Hà & An để nhận thiệp riêng nhé.`
-    : "Bạn vui lòng điền tên để tụi mình ghi nhận xác nhận tham dự nhé.";
+  elements.rsvpPrivateNote.textContent = `Link này được gửi riêng cho ${guestName}. Nếu bạn không phải ${guestName}, vui lòng nhắn Hà & An để nhận thiệp riêng nhé.`;
   elements.rsvpGroup.value = currentGroup;
   elements.wishName.value = guestName;
-  elements.wishName.readOnly = Boolean(customGuestName);
-  elements.wishIntro.textContent = customGuestName
-    ? `Lời chúc của ${guestName} sẽ là một kỷ niệm thật đẹp dành cho tụi mình.`
-    : "Lời chúc của bạn sẽ là một kỷ niệm thật đẹp dành cho tụi mình.";
-  elements.giftIntro.textContent = customGuestName
-    ? `Có ${guestName} chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.`
-    : "Có bạn chung vui đã là món quà quý nhất. Nếu muốn gửi thêm chút thương mến từ xa, bọn mình luôn thật lòng ghi nhận.";
-  elements.closingIntro.textContent = customGuestName
-    ? `Vì ngày đặc biệt sẽ càng ý nghĩa hơn khi có những người đặc biệt ở bên. Mong ${guestWithFamily} đến chung vui cùng tụi mình nhé!`
-    : "Vì ngày đặc biệt sẽ càng ý nghĩa hơn khi có những người đặc biệt ở bên. Mong bạn và gia đình đến chung vui cùng tụi mình nhé!";
   const calendarGroup = currentGroup === "nha-gai" ? "nha-gai" : "nha-trai";
   elements.saveCalendar.href = makeCalendarUrl(calendarEvents[calendarGroup]);
   document.title = `Thiệp cưới Hà & An - ${guestName}`;
@@ -331,15 +289,10 @@ function renderGifts() {
 }
 
 function setActiveGroup() {
-  const tabs = document.querySelector(".tabs");
-  if (tabs && lockedGroup) tabs.hidden = true;
-
   document.querySelectorAll("[data-group]").forEach((button) => {
     const active = button.dataset.group === currentGroup;
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-selected", String(active));
-    button.hidden = Boolean(lockedGroup && !active);
-    button.disabled = Boolean(lockedGroup);
   });
 }
 
@@ -563,16 +516,41 @@ function renderWishes() {
   if (!wishes.length) {
     elements.wishList.innerHTML = "";
     elements.wishList.hidden = true;
+    elements.wishPagination.innerHTML = "";
+    elements.wishPagination.hidden = true;
+    currentWishPage = 1;
     return;
   }
 
+  const totalPages = Math.ceil(wishes.length / wishesPerPage);
+  currentWishPage = Math.min(Math.max(currentWishPage, 1), totalPages);
+  const pageStart = (currentWishPage - 1) * wishesPerPage;
+  const visibleWishes = wishes.slice(pageStart, pageStart + wishesPerPage);
+
   elements.wishList.hidden = false;
-  elements.wishList.innerHTML = wishes.map((wish) => `
+  elements.wishList.innerHTML = visibleWishes.map((wish) => `
     <article class="wish-item">
       <p>${escapeHtml(wish.message)}</p>
       <strong>${escapeHtml(wish.name)}</strong>
     </article>
   `).join("");
+
+  renderWishPagination(totalPages);
+}
+
+function renderWishPagination(totalPages) {
+  if (totalPages <= 1) {
+    elements.wishPagination.innerHTML = "";
+    elements.wishPagination.hidden = true;
+    return;
+  }
+
+  elements.wishPagination.hidden = false;
+  elements.wishPagination.innerHTML = `
+    <button type="button" data-wish-page="prev" ${currentWishPage === 1 ? "disabled" : ""}>Trước</button>
+    <span>Trang ${currentWishPage} / ${totalPages}</span>
+    <button type="button" data-wish-page="next" ${currentWishPage === totalPages ? "disabled" : ""}>Sau</button>
+  `;
 }
 
 function saveWish(name, message) {
@@ -619,19 +597,13 @@ function loadGuestbookMessagesFromSheet() {
 }
 
 function toggleForm(button, form) {
-  const panel = form.closest(".panel");
-  const panelTop = panel?.getBoundingClientRect().top;
   const willOpen = form.hidden;
   form.hidden = !willOpen;
   button.setAttribute("aria-expanded", String(willOpen));
   if (willOpen) {
+    form.querySelector("input, select, textarea")?.focus();
     observeRevealTargets();
     scheduleRevealCheck();
-  }
-  if (panel && typeof panelTop === "number") {
-    requestAnimationFrame(() => {
-      window.scrollBy(0, panel.getBoundingClientRect().top - panelTop);
-    });
   }
 }
 
@@ -740,7 +712,8 @@ function observeRevealTargets() {
     ".wish-form label",
     ".gift-card",
     ".gift-card__qr",
-    ".wish-item"
+    ".wish-item",
+    ".wish-pagination"
   ].join(","));
 
   targets.forEach((target, index) => {
@@ -855,8 +828,6 @@ function bindEvents() {
   });
 
   document.querySelectorAll("[data-group]").forEach((button) => {
-    if (lockedGroup) return;
-
     button.addEventListener("click", () => {
       currentGroup = button.dataset.group;
       elements.invite.classList.add("is-updating");
@@ -884,6 +855,16 @@ function bindEvents() {
     }
     elements.wishMessage.value = "";
     elements.wishStatus.textContent = `Cảm ơn ${name} đã gửi lời chúc.`;
+    currentWishPage = 1;
+    renderWishes();
+    observeRevealTargets();
+    scheduleRevealCheck();
+  });
+
+  elements.wishPagination.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-wish-page]");
+    if (!button) return;
+    currentWishPage += button.dataset.wishPage === "next" ? 1 : -1;
     renderWishes();
     observeRevealTargets();
     scheduleRevealCheck();
