@@ -7,6 +7,7 @@ const wedding = {
       greeting: "Bạn bè nhà gái",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "26.10.2026",
       countdownTitle: "Lễ Vu Quy tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     },
@@ -15,6 +16,7 @@ const wedding = {
       greeting: "Bạn bè nhà trai",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "30.10.2026",
       countdownTitle: "Lễ Tân Hôn tại TP. Hồ Chí Minh",
       countdownTarget: "2026-10-30T09:00:00+07:00"
     },
@@ -23,6 +25,7 @@ const wedding = {
       greeting: "Bạn thương mến",
       subtitle: "Gửi bạn tấm thiệp cưới đong đầy yêu thương.",
       copy: "Những ai nhận được lời mời này đều là những người đặc biệt với bọn mình. Mong bạn và gia đình ghé đến chung vui, cùng chứng kiến khoảnh khắc hạnh phúc của hai đứa nhé.",
+      coverDate: "26.10.2026 • 30.10.2026",
       countdownTitle: "Ngày vui đầu tiên tại Gia Lai",
       countdownTarget: "2026-10-26T08:00:00+07:00"
     }
@@ -67,18 +70,18 @@ const galleryImages = [
 
 const calendarEvents = {
   "nha-gai": {
-    text: "Lễ Vu Quy Hà & An",
-    start: "20261026T010000Z",
-    end: "20261026T020000Z",
+    text: "Tiệc Vu Quy Hà & An",
+    start: "20261026T040000Z",
+    end: "20261026T060000Z",
     location: "Thôn Tân Lập, xã K'Dang, tỉnh Gia Lai",
-    details: "Lễ Đính Hôn & Vu Quy của Hà và An."
+    details: "Tiệc Vu Quy từ 11:00 đến 13:00."
   },
   "nha-trai": {
     text: "Tiệc cưới Hà & An",
-    start: "20261030T123000Z",
-    end: "20261030T143000Z",
+    start: "20261030T103000Z",
+    end: "20261030T140000Z",
     location: "Sảnh Tình Yêu - Nhà hàng Cưới Nam Bộ, 615A Âu Cơ, TP. Hồ Chí Minh",
-    details: "Đón khách 17:30, khai tiệc 19:00."
+    details: "Đón khách 17:30, sự kiện kết thúc lúc 21:00."
   }
 };
 
@@ -111,6 +114,7 @@ const elements = {
   welcome: document.getElementById("welcome"),
   openInvite: document.getElementById("openInvite"),
   welcomeGuest: document.getElementById("welcomeGuest"),
+  welcomeDate: document.getElementById("welcomeDate"),
   invite: document.getElementById("invite"),
   homeGreeting: document.getElementById("homeGreeting"),
   homeDates: document.getElementById("homeDates"),
@@ -172,6 +176,7 @@ function makeCalendarUrl(event) {
 function updateText() {
   const group = wedding.groups[currentGroup];
   elements.welcomeGuest.textContent = guestName;
+  elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
   renderHomeDates();
   elements.guestNameTitle.textContent = guestName;
