@@ -54,11 +54,12 @@ img { max-width: 100%; display: block; }
   inset: 0;
   z-index: 20;
   display: grid;
-  place-items: center;
+  place-items: safe center;
   padding: 24px;
   color: #fffaf1;
   background: #250607;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   transition: opacity 680ms ease, visibility 680ms ease, transform 680ms ease;
 }
 
@@ -90,9 +91,11 @@ img { max-width: 100%; display: block; }
   animation: welcomeRise 920ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.welcome__panel > * { flex-shrink: 0; }
+
 .welcome__photo {
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border: 4px solid rgba(255, 246, 222, 0.92);
   border-radius: 999px;
@@ -130,6 +133,54 @@ img { max-width: 100%; display: block; }
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
+}
+
+.cover-locations {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+
+.cover-location {
+  display: grid;
+  gap: 5px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 231, 184, 0.5);
+  border-radius: 18px;
+  background: rgba(35, 6, 6, 0.65);
+  line-height: 1.5;
+}
+
+.cover-location small {
+  color: #ffe7b8;
+  font-size: 0.75rem;
+}
+
+.cover-location strong { font-size: 1rem; }
+.cover-location span { font-size: 0.88rem; }
+
+.cover-location a {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #ffe7b8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cover-location a:focus-visible {
+  outline: 2px solid #ffe7b8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.home-date-card .home-date-address {
+  margin-top: 6px;
+  color: #fffaf1;
+  font-size: 0.85rem;
 }
 
 .guest-box {

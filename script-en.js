@@ -191,6 +191,7 @@ function updateText() {
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Dear ${guestName}, with love, we invite you to our wedding celebration.`;
   renderHomeDates();
+  renderCoverLocations(wedding, currentGroup);
   updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Dear ${guestName}, with love, we invite you to our wedding celebration!`;

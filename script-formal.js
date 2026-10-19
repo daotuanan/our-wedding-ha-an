@@ -194,6 +194,7 @@ function updateText() {
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = group.subtitle;
   renderHomeDates();
+  renderCoverLocations(wedding, currentGroup);
   updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = group.invitationGreeting;

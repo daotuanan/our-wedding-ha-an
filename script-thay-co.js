@@ -208,6 +208,7 @@ function updateText() {
   elements.desktopGreeting.textContent = personalize(group.subtitle);
   elements.homeGreeting.textContent = personalize(group.subtitle);
   renderHomeDates();
+  renderCoverLocations(wedding, currentGroup);
   updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = personalize(group.invitationGreeting);

@@ -179,6 +179,7 @@ function updateText() {
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương.`;
   renderHomeDates();
+  renderCoverLocations(wedding, currentGroup);
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Gửi ${guestName} tấm thiệp cưới đong đầy yêu thương!`;
   elements.invitationCopy.textContent = group.copy;
