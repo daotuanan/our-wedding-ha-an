@@ -45,15 +45,6 @@ const wedding = {
     { group: "nha-gai", time: "11:00, Monday 26/10/2026", title: "Wedding Reception", description: "Reception at the bride's home." },
     { group: "nha-trai", time: "09:00, Friday 30/10/2026", title: "Groom's Home Ceremony", description: "Family ceremony at the groom's home." },
     { group: "nha-trai", time: "17:30 guest welcome, 19:00 reception, Friday 30/10/2026", title: "Wedding Reception", description: "Tinh Yeu Hall, Nam Bo Restaurant." }
-  ],
-  locations: [
-    { group: "nha-gai", title: "Bride's family home", address: "Tan Lap Hamlet, K'Dang Commune, Gia Lai Province", map: "https://maps.app.goo.gl/XVBLExx425U4GgYa7", qr: "assets/qr_nha_gai.png" },
-    { group: "nha-trai", title: "Groom's family home", address: "13/5 Nguyen Van Yen, Phu Thanh Ward, Ho Chi Minh City", map: "https://maps.app.goo.gl/11QG3p5N6a3PNHxc9", qr: "assets/qr_nha_trai.png" },
-    { group: "nha-trai", title: "Tinh Yeu Hall", address: "Nam Bo Wedding Restaurant, 615A Au Co, Tan Phu Ward, Ho Chi Minh City", map: "https://maps.app.goo.gl/9Eqx5mkL876KupAy7", qr: "assets/qr_nha_trai_le.png" }
-  ],
-  gifts: [
-    { group: "nha-gai", title: "Bride's gift box", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" },
-    { group: "nha-trai", title: "Groom's gift box", bank: "Vietcombank", accountName: "Dao Thi Thu Ha", account: "0071001001311", qr: "BankAccount/CD_bank_account.JPG" }
   ]
 };
 
@@ -73,14 +64,12 @@ const calendarEvents = {
     text: "Ha & An Wedding Ceremony",
     start: "20261026T010000Z",
     end: "20261026T020000Z",
-    location: "Tan Lap Hamlet, K'Dang Commune, Gia Lai Province",
     details: "Ha and An's engagement and bride's ceremony."
   },
   "nha-trai": {
     text: "Ha & An Wedding Reception",
     start: "20261030T123000Z",
     end: "20261030T143000Z",
-    location: "Tinh Yeu Hall, Nam Bo Restaurant, 615A Au Co, Ho Chi Minh City",
     details: "Guest welcome at 17:30, reception starts at 19:00."
   }
 };
@@ -129,8 +118,6 @@ const elements = {
   seconds: document.getElementById("seconds"),
   dateCards: document.getElementById("dateCards"),
   timeline: document.getElementById("timeline"),
-  locationList: document.getElementById("locationList"),
-  giftList: document.getElementById("giftList"),
   galleryViewport: document.getElementById("galleryViewport"),
   galleryImage: document.getElementById("galleryImage"),
   galleryPrev: document.getElementById("galleryPrev"),
@@ -179,8 +166,7 @@ function makeCalendarUrl(event) {
     text: event.text,
     dates: `${event.start}/${event.end}`,
     ctz: "Asia/Ho_Chi_Minh",
-    details: event.details,
-    location: event.location
+    details: event.details
   });
   return `https://www.google.com/calendar/render?${params.toString()}`;
 }
@@ -191,7 +177,6 @@ function updateText() {
   elements.welcomeDate.textContent = group.coverDate;
   elements.homeGreeting.textContent = `Dear ${guestName}, with love, we invite you to our wedding celebration.`;
   renderHomeDates();
-  renderCoverLocations(wedding, currentGroup);
   updateParentsOrder();
   elements.guestNameTitle.textContent = guestName;
   elements.invitationGreeting.textContent = `Dear ${guestName}, with love, we invite you to our wedding celebration!`;
@@ -248,68 +233,6 @@ function renderTimeline() {
       <p>${event.description}</p>
     </article>
   `).join("");
-}
-
-function renderLocations() {
-  elements.locationList.innerHTML = wedding.locations.filter(matchesGroup).map((location) => `
-    <article class="location-card">
-      <small>${location.group === "nha-gai" ? "Bride's family" : "Groom's family"}</small>
-      <h3>${location.title}</h3>
-      <p>${location.address}</p>
-      <img src="${location.qr}" alt="Directions QR for ${location.title}" loading="lazy" decoding="async" />
-      <a href="${location.map}" target="_blank" rel="noreferrer">Open Google Maps</a>
-    </article>
-  `).join("");
-}
-
-function renderGifts() {
-  if (!elements.giftList) return;
-
-  elements.giftList.innerHTML = wedding.gifts.filter(matchesGroup).map((gift) => `
-    <article class="gift-card">
-      <small>${gift.group === "nha-gai" ? "Bride's family" : "Groom's family"}</small>
-      <h3>${gift.title}</h3>
-      <button class="gift-card__qr" type="button" data-gift-toggle aria-expanded="false">
-        <span>囍</span>
-        <img data-src="${gift.qr}" alt="Account QR for ${gift.title}" hidden />
-      </button>
-      <small class="gift-card__hint" data-gift-hint>Tap the symbol to show QR</small>
-      <div class="gift-card__details" data-gift-details hidden>
-        <dl>
-          <div><dt>Bank</dt><dd>${gift.bank}</dd></div>
-          <div><dt>Account name</dt><dd>${gift.accountName}</dd></div>
-          <div><dt>Account number</dt><dd>${gift.account}</dd></div>
-        </dl>
-        <button class="copy-btn" type="button" data-copy="${gift.account}">Copy account number</button>
-      </div>
-    </article>
-  `).join("");
-
-  elements.giftList.querySelectorAll("[data-gift-toggle]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const image = button.querySelector("img");
-      const willShow = image.hidden;
-      if (willShow && image.dataset.src) {
-        image.src = image.dataset.src;
-        delete image.dataset.src;
-      }
-      image.hidden = !willShow;
-      button.querySelector("span").hidden = willShow;
-      button.setAttribute("aria-expanded", String(willShow));
-
-      const card = button.closest(".gift-card");
-      card.querySelector("[data-gift-details]").hidden = !willShow;
-      card.querySelector("[data-gift-hint]").textContent = willShow ? "Tap again to hide the QR code" : "Tap the symbol to show QR";
-    });
-  });
-
-  elements.giftList.querySelectorAll("[data-copy]").forEach((button) => {
-    button.addEventListener("click", async () => {
-      await navigator.clipboard?.writeText(button.dataset.copy);
-      button.textContent = "Copied";
-      window.setTimeout(() => { button.textContent = "Copy account number"; }, 1400);
-    });
-  });
 }
 
 function setActiveGroup() {
@@ -817,8 +740,6 @@ function refreshGroup() {
   updateText();
   renderDates();
   renderTimeline();
-  renderLocations();
-  renderGifts();
   setActiveGroup();
   updateCountdown();
 }
